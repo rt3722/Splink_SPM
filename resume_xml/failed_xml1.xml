@@ -1,0 +1,541 @@
+<Resume xml:lang="en" xmlns="http://ns.hr-xml.org/2006-02-28" xmlns:sov="http://sovren.com/hr-xml/2006-02-28">
+  <ResumeId>
+    <IdValue></IdValue>
+  </ResumeId>
+  <StructuredXMLResume>
+    <ContactInfo>
+      <PersonName>
+        <FormattedName>***</FormattedName>
+        <GivenName>***</GivenName>
+        <FamilyName>***</FamilyName>
+      </PersonName>
+      <ContactMethod>
+        <WhenAvailable>anytime</WhenAvailable>
+        <PostalAddress>
+          <CountryCode>US</CountryCode>
+          <PostalCode>48335</PostalCode>
+          <Region>MI</Region>
+          <Municipality>Farmington hills</Municipality>
+          <DeliveryAddress>
+            <AddressLine>***</AddressLine>
+          </DeliveryAddress>
+        </PostalAddress>
+      </ContactMethod>
+      <ContactMethod>
+        <Telephone>
+          <FormattedNumber>***</FormattedNumber>
+        </Telephone>
+      </ContactMethod>
+      <ContactMethod>
+        <Use>personal</Use>
+        <Location>onPerson</Location>
+        <WhenAvailable>anytime</WhenAvailable>
+        <InternetEmailAddress>***</InternetEmailAddress>
+      </ContactMethod>
+    </ContactInfo>
+    <ExecutiveSummary>*	Data analyst with more than 4 years' experience as sql developer and proficient with design
+and development experience in Microsoft Access, Microsoft Excel, VBA and SQL queries.
+*	Skillful in installation, configuration, and Troubleshooting of MS SQL servers 2008, 2012, 2016.
+*	Expertise in writing good standard T-SQL queries, stored procedures, Indexed views, User
+Defined Functions (UDF), Triggers, Joins, Views Distributed Queries and Common Table
+Expressions (CTE) and relational database management (RDBMS).
+*	Developed and maintained website for data entry purposes taking Excel workbooks, translating
+to MS Access database, then exporting to MSSQL database.
+*	Define reporting requirements and gather data, using MS Access and MS PowerPoint to create and
+maintain management reports, also export data from MS access to MS Excel to create Pivot table
+for management do more analysis.
+*	Used MS Access/VBA to send system generated e-mails, verify passwords using Spellchecker,
+manage and report embedded Word and Excel documents
+*	Developed macros to reduce duplicate data entries and created Dashboards using Pivot tables
+and VLOOKUP formula in Excel.
+*	Designed and developed SSIS Packages for loading data from text files, CSV files to SQL Server
+databases	using SSIS.
+*	Scheduled reports for daily, weekly, monthly reports for executives, Business analyst and
+customer representatives for various categories and regions based on business needs using SQL
+Server Reporting services (SSRS).
+*	Designed Dimensional Modeling using SSAS packages for End-User. Created Hierarchies in
+Dimensional Modeling.
+*	Experience in creating Jobs, Alerts, SQL Mail Agents.
+*	Involved in all phases of the SDLC (software development life cycle).
+*	Excellent communication and documentation skills combined with database issues resolution
+skills as well as flexible to learn advancements in the IT industry.
+*	Experience working with Production and 24 x 7 on Call environments.
+*	Team player with excellent Interpersonal, communication and analytical skills.</ExecutiveSummary>
+    <EmploymentHistory>
+      <EmployerOrg>
+        <EmployerOrgName>Tyler Technologies</EmployerOrgName>
+        <PositionHistory currentEmployer="true" positionType="directHire">
+          <Title>Data Analyst</Title>
+          <OrgName>
+            <OrganizationName>Tyler Technologies</OrganizationName>
+          </OrgName>
+          <OrgInfo>
+            <PositionLocation>
+              <CountryCode>US</CountryCode>
+              <Region>MI</Region>
+              <Municipality>Troy</Municipality>
+            </PositionLocation>
+          </OrgInfo>
+          <Description>Tyler technologies is a leading software services provider to the public sectors in USA. Services
+are extended to public and health safety, courts, erp financial, schools and community development.
+
+Roles and Responsibilities:
+*	Prepared and loaded data in various formats.
+*	Updated, edited and generated reports using MS excel and access.
+*	Created specialized reports in Crystal Reports to report summarized data for research
+analysis.
+*	Developed macros to reduce duplicate data entries and created Dashboards using Pivot tables
+and VLOOKUP formula in Excel.
+*	Migrate databases from 2008 to 2016 database servers by using backup restore method.
+*	Robocopy files from production servers to new servers.
+*	Manage Group Policy Objects (GPOs) and configured MSDTC settings.
+*	Trouble shoot networking issues accordingly to the installation of the applications.
+*	Running sql queries to generate reports and created reports using data and also organized the data.
+*	Created views to facilitate easy user interface implementation, and triggers on them to facilitate consistent data entry into the database.
+*	Built and maintained a robust data warehousing system for the organization.
+*	Created DDL scripts using ER Studio and source to target mappings to bring the data from source to the warehouse.
+*	Worked on data profiling and data validation to ensure the accuracy of the data between the warehouse and source systems.
+*	Gathered Business requirements by organizing and managing meetings with business stake
+holders, Application architects, Technical architects and IT analysts on a scheduled basis.
+Environment: SQL servers 2014, 2012, MS Visio, MS Excel, MS access, VBA, shell scripting.</Description>
+          <StartDate>
+            <YearMonth>2016-03</YearMonth>
+          </StartDate>
+          <EndDate>
+            <StringDate>current</StringDate>
+          </EndDate>
+          <JobCategory>
+            <TaxonomyName>Skills taxonomy</TaxonomyName>
+            <CategoryCode>Information Technology ? Database</CategoryCode>
+            <Comments>Information Technology describes 67% of this job</Comments>
+          </JobCategory>
+          <JobCategory>
+            <TaxonomyName>Job Level</TaxonomyName>
+            <CategoryCode>Senior (more than 5 years experience)</CategoryCode>
+          </JobCategory>
+          <UserArea>
+            <sov:PositionHistoryUserArea>
+              <sov:Id>POS-1</sov:Id>
+              <sov:CompanyNameProbabilityInterpretation internalUseOnly="ST">Confident</sov:CompanyNameProbabilityInterpretation>
+              <sov:PositionTitleProbabilityInterpretation internalUseOnly="ST">Confident</sov:PositionTitleProbabilityInterpretation>
+            </sov:PositionHistoryUserArea>
+          </UserArea>
+        </PositionHistory>
+      </EmployerOrg>
+      <EmployerOrg>
+        <EmployerOrgName>Franklin Templeton Investments</EmployerOrgName>
+        <PositionHistory positionType="directHire">
+          <Title>SQL DEVELOPER</Title>
+          <OrgName>
+            <OrganizationName>Franklin Templeton Investments</OrganizationName>
+          </OrgName>
+          <Description>Franklin Templeton is a leading investment banking company in United States. Designed developed
+databases. Build laboratory application and data repository systems which can accommodate employee's
+data.
+
+Roles and Responsibilities
+*	Developed database objects like Tables, views, stored procedures, indexes etc.
+*	Extensively used Joins and sub-Queries to simplify complex queries involving multiple tables.
+*	Developed DDL triggers and user-defined functions.
+*	Creating Logins and Roles with appropriate permissions.
+*	Creating and Maintaining Database Maintenance Plans.
+*	Created and scheduled SSIS packages to pull data from SQL Server and exported to Excel
+Spreadsheets and vice versa.
+*	Worked in 24x7 production environment.
+Environment: SQL servers 2008, 2012, command prompt, shell scripting, SSIS, SSRS</Description>
+          <StartDate>
+            <YearMonth>2015-01</YearMonth>
+          </StartDate>
+          <EndDate>
+            <YearMonth>2016-02</YearMonth>
+          </EndDate>
+          <JobCategory>
+            <TaxonomyName>Skills taxonomy</TaxonomyName>
+            <CategoryCode>Information Technology ? Database</CategoryCode>
+            <Comments>Information Technology describes 48% of this job</Comments>
+          </JobCategory>
+          <JobCategory>
+            <TaxonomyName>Job Level</TaxonomyName>
+            <CategoryCode>Entry Level</CategoryCode>
+          </JobCategory>
+          <UserArea>
+            <sov:PositionHistoryUserArea>
+              <sov:Id>POS-2</sov:Id>
+              <sov:CompanyNameProbabilityInterpretation internalUseOnly="ST">Confident</sov:CompanyNameProbabilityInterpretation>
+              <sov:PositionTitleProbabilityInterpretation internalUseOnly="ST">Confident</sov:PositionTitleProbabilityInterpretation>
+            </sov:PositionHistoryUserArea>
+          </UserArea>
+        </PositionHistory>
+      </EmployerOrg>
+    </EmploymentHistory>
+    <Qualifications>
+      <QualificationSummary>TECHNICAL SKILLS:
+
+Languages	T-SQL, XML, C, HTML, shell scripting.
+Tools	MS Excel, MS Access, VBA, SSIS, SSRS, SSAS, SQL Profiler, Visio 2000.
+Application Software	Visual Studio 2005/2008/2010, MSOffice Suite 2003/2007/2010.
+
+ETL &amp;reporting tools	SSIS, SSRS, SSAS.
+Operating Systems	Windows2000/2003/2008/2012/XP/VISTA/7, VMware.
+Databases	MSSQLServer2012/2008R2/2008/2005/2000, MS Access.</QualificationSummary>
+    </Qualifications>
+    <Languages>
+      <Language>
+        <LanguageCode>en</LanguageCode>
+        <Read>true</Read>
+        <Write>true</Write>
+        <Speak>true</Speak>
+        <Comments>[RESUME_LANGUAGE]</Comments>
+      </Language>
+    </Languages>
+    <RevisionDate>2019-12-15</RevisionDate>
+  </StructuredXMLResume>
+  <NonXMLResume>
+    <TextResume>LAKSHMI CHARAN
+Data Analyst
+35488 crescent ct, Farmington hills, MI, 48335.
+Charan0945@gmail.com  Phone No: 3478039767
+
+
+PROFESSIONAL SUMMARY:
+
+*	Data analyst with more than 4 years' experience as sql developer and proficient with design
+and development experience in Microsoft Access, Microsoft Excel, VBA and SQL queries.
+*	Skillful in installation, configuration, and Troubleshooting of MS SQL servers 2008, 2012, 2016.
+*	Expertise in writing good standard T-SQL queries, stored procedures, Indexed views, User
+Defined Functions (UDF), Triggers, Joins, Views Distributed Queries and Common Table
+Expressions (CTE) and relational database management (RDBMS).
+*	Developed and maintained website for data entry purposes taking Excel workbooks, translating
+to MS Access database, then exporting to MSSQL database.
+*	Define reporting requirements and gather data, using MS Access and MS PowerPoint to create and
+maintain management reports, also export data from MS access to MS Excel to create Pivot table
+for management do more analysis.
+*	Used MS Access/VBA to send system generated e-mails, verify passwords using Spellchecker,
+manage and report embedded Word and Excel documents
+*	Developed macros to reduce duplicate data entries and created Dashboards using Pivot tables
+and VLOOKUP formula in Excel.
+*	Designed and developed SSIS Packages for loading data from text files, CSV files to SQL Server
+databases	using SSIS.
+*	Scheduled reports for daily, weekly, monthly reports for executives, Business analyst and
+customer representatives for various categories and regions based on business needs using SQL
+Server Reporting services (SSRS).
+*	Designed Dimensional Modeling using SSAS packages for End-User. Created Hierarchies in
+Dimensional Modeling.
+*	Experience in creating Jobs, Alerts, SQL Mail Agents.
+*	Involved in all phases of the SDLC (software development life cycle).
+*	Excellent communication and documentation skills combined with database issues resolution
+skills as well as flexible to learn advancements in the IT industry.
+*	Experience working with Production and 24 x 7 on Call environments.
+*	Team player with excellent Interpersonal, communication and analytical skills.
+
+WORK EXPERIENCE:
+
+Tyler Technologies - Troy, MI  March 2016 -PRESENT
+JOB TITLE: Data Analyst
+
+
+Tyler technologies is a leading software services provider to the public sectors in USA. Services
+are extended to public and health safety, courts, erp financial, schools and community development.
+
+Roles and Responsibilities:
+*	Prepared and loaded data in various formats.
+*	Updated, edited and generated reports using MS excel and access.
+*	Created specialized reports in Crystal Reports to report summarized data for research
+analysis.
+*	Developed macros to reduce duplicate data entries and created Dashboards using Pivot tables
+and VLOOKUP formula in Excel.
+*	Migrate databases from 2008 to 2016 database servers by using backup restore method.
+*	Robocopy files from production servers to new servers.
+*	Manage Group Policy Objects (GPOs) and configured MSDTC settings.
+*	Trouble shoot networking issues accordingly to the installation of the applications.
+*	Running sql queries to generate reports and created reports using data and also organized the
+data.
+*	Created views to facilitate easy user interface implementation, and triggers on them to
+facilitate consistent data entry into the database.
+*	Built and maintained a robust data warehousing system for the organization.
+*	Created DDL scripts using ER Studio and source to target mappings to bring the data from
+source to the warehouse.
+*	Worked on data profiling and data validation to ensure the accuracy of the data between the
+warehouse and source systems.
+*	Gathered Business requirements by organizing and managing meetings with business stake
+holders, Application architects, Technical architects and IT analysts on a scheduled basis.
+Environment: SQL servers 2014, 2012, MS Visio, MS Excel, MS access, VBA, shell scripting.
+
+Franklin Templeton Investments	Jan 2015- Feb 2016
+
+JOB TITLE: SQL DEVELOPER
+Franklin Templeton is a leading investment banking company in United States. Designed developed
+databases. Build laboratory application and data repository systems which can accommodate employee's
+data.
+
+Roles and Responsibilities
+*	Developed database objects like Tables, views, stored procedures, indexes etc.
+*	Extensively used Joins and sub-Queries to simplify complex queries involving multiple tables.
+*	Developed DDL triggers and user-defined functions.
+*	Creating Logins and Roles with appropriate permissions.
+*	Creating and Maintaining Database Maintenance Plans.
+*	Created and scheduled SSIS packages to pull data from SQL Server and exported to Excel
+Spreadsheets and vice versa.
+*	Worked in 24x7 production environment.
+Environment: SQL servers 2008, 2012, command prompt, shell scripting, SSIS, SSRS
+
+
+TECHNICAL SKILLS:
+
+Languages	T-SQL, XML, C, HTML, shell scripting.
+Tools	MS Excel, MS Access, VBA, SSIS, SSRS, SSAS, SQL Profiler, Visio 2000.
+Application Software	Visual Studio 2005/2008/2010, MSOffice Suite 2003/2007/2010.
+
+ETL &amp;reporting tools	SSIS, SSRS, SSAS.
+Operating Systems	Windows2000/2003/2008/2012/XP/VISTA/7, VMware.
+Databases	MSSQLServer2012/2008R2/2008/2005/2000, MS Access.</TextResume>
+  </NonXMLResume>
+  <UserArea>
+    <sov:ResumeUserArea>
+      <sov:Culture>
+        <sov:Language>en</sov:Language>
+        <sov:Country>US</sov:Country>
+        <sov:CultureInfo>en-US</sov:CultureInfo>
+      </sov:Culture>
+      <sov:ExperienceSummary>
+        <sov:Description>LAKSHMI CHARAN's experience appears to be strongly concentrated in Information Technology (mostly Database) and slightly concentrated in Common End-user Software (mostly Core Office). LAKSHMI CHARAN has 5 years of work experience.</sov:Description>
+        <sov:MonthsOfWorkExperience>60</sov:MonthsOfWorkExperience>
+        <sov:AverageMonthsPerEmployer>30</sov:AverageMonthsPerEmployer>
+        <sov:FulltimeDirectHirePredictiveIndex>85</sov:FulltimeDirectHirePredictiveIndex>
+        <sov:MonthsOfManagementExperience>0</sov:MonthsOfManagementExperience>
+        <sov:HighestManagementScore>0</sov:HighestManagementScore>
+        <sov:ExecutiveType>none</sov:ExecutiveType>
+        <sov:ManagementStory></sov:ManagementStory>
+        <sov:SkillsTaxonomyOutput>
+          <sov:TaxonomyRoot name="Sovren">
+            <sov:Taxonomy id="10" name="Information Technology" percentOfOverall="68">
+              <sov:Subtaxonomy id="193" name="Database" percentOfOverall="29" percentOfParentTaxonomy="43">
+                <sov:Skill existsInText="true" id="014962" lastUsed="2019-12-15" name="DATA ANALYST" totalMonths="46" whereFound="Found in SUMMARY; WORK HISTORY; POS-1"></sov:Skill>
+                <sov:Skill childrenLastUsed="2019-12-15" childrenTotalMonths="60" existsInText="false" id="026777" name="DATABASE MODELING">
+                  <sov:ChildSkill existsInText="true" id="022486" lastUsed="2019-12-15" name="DATABASE" totalMonths="60" whereFound="Found in SUMMARY; WORK HISTORY; POS-1; POS-2"></sov:ChildSkill>
+                </sov:Skill>
+                <sov:Skill existsInText="true" id="015106" lastUsed="2019-12-15" name="DDL" totalMonths="60" whereFound="Found in WORK HISTORY; POS-1; POS-2"></sov:Skill>
+                <sov:Skill childrenLastUsed="2019-12-15" childrenTotalMonths="46" existsInText="true" id="021809" name="MICROSOFT ACCESS" whereFound="Found in SUMMARY">
+                  <sov:ChildSkill existsInText="true" id="024531" lastUsed="2019-12-15" name="MS ACCESS" totalMonths="46" whereFound="Found in SKILLS; SUMMARY; WORK HISTORY; POS-1"></sov:ChildSkill>
+                </sov:Skill>
+                <sov:Skill childrenLastUsed="2016-02-29" childrenTotalMonths="14" existsInText="false" id="023733" name="MS SQL SERVER">
+                  <sov:ChildSkill existsInText="true" id="008483" lastUsed="2016-02-29" name="SQL SERVER" totalMonths="14" whereFound="Found in SUMMARY; WORK HISTORY; POS-2"></sov:ChildSkill>
+                </sov:Skill>
+                <sov:Skill existsInText="true" id="006720" name="RELATIONAL DATABASE" whereFound="Found in SUMMARY"></sov:Skill>
+                <sov:Skill existsInText="true" id="008481" lastUsed="2019-12-15" name="SQL" totalMonths="60" whereFound="Found in SKILLS; SUMMARY; WORK HISTORY; POS-1; POS-2"></sov:Skill>
+                <sov:Skill existsInText="true" id="3404001" lastUsed="2019-12-15" name="SQL QUERIES" totalMonths="46" whereFound="Found in SUMMARY; WORK HISTORY; POS-1"></sov:Skill>
+                <sov:Skill existsInText="true" id="008661" lastUsed="2016-02-29" name="STORED PROCEDURES" totalMonths="14" whereFound="Found in SUMMARY; WORK HISTORY; POS-2"></sov:Skill>
+              </sov:Subtaxonomy>
+              <sov:Subtaxonomy id="204" name="Programming" percentOfOverall="12" percentOfParentTaxonomy="17">
+                <sov:Skill existsInText="false" id="023039" name=".NET">
+                  <sov:ChildSkill existsInText="true" id="010645" name="VISUAL STUDIO" whereFound="Found in SKILLS"></sov:ChildSkill>
+                </sov:Skill>
+                <sov:Skill existsInText="true" id="022568" name="APPLICATION SOFTWARE" whereFound="Found in SKILLS"></sov:Skill>
+                <sov:Skill existsInText="true" id="019115" name="HTML" whereFound="Found in SKILLS"></sov:Skill>
+                <sov:Skill existsInText="true" id="024873" lastUsed="2019-12-15" name="SCRIPTING" totalMonths="60" whereFound="Found in SKILLS; WORK HISTORY; POS-1; POS-2"></sov:Skill>
+                <sov:Skill existsInText="false" id="022594" name="STRUCTURED SOFTWARE">
+                  <sov:ChildSkill existsInText="true" id="008213" name="SOFTWARE DEVELOPMENT" whereFound="Found in SUMMARY"></sov:ChildSkill>
+                </sov:Skill>
+                <sov:Skill existsInText="true" id="3391143" lastUsed="2019-12-15" name="VBA" totalMonths="46" whereFound="Found in SKILLS; SUMMARY; WORK HISTORY; POS-1"></sov:Skill>
+                <sov:Skill existsInText="true" id="022692" lastUsed="2019-12-15" name="VISIO" totalMonths="46" whereFound="Found in SKILLS; WORK HISTORY; POS-1"></sov:Skill>
+                <sov:Skill existsInText="true" id="011476" name="XML" whereFound="Found in SKILLS"></sov:Skill>
+              </sov:Subtaxonomy>
+              <sov:Subtaxonomy id="553" name="Big Data" percentOfOverall="7" percentOfParentTaxonomy="10">
+                <sov:Skill existsInText="true" id="5530939" lastUsed="2019-12-15" name="DATA ANALYST" totalMonths="46" whereFound="Found in SUMMARY; WORK HISTORY; POS-1"></sov:Skill>
+                <sov:Skill existsInText="true" id="5530957" lastUsed="2019-12-15" name="DATA PROFILING" totalMonths="46" whereFound="Found in WORK HISTORY; POS-1"></sov:Skill>
+                <sov:Skill childrenLastUsed="2019-12-15" childrenTotalMonths="46" existsInText="false" id="5530983" name="ENTERPRISE RESOURCE PLANNING">
+                  <sov:ChildSkill existsInText="true" id="5530984" lastUsed="2019-12-15" name="ERP" totalMonths="46" whereFound="Found in WORK HISTORY; POS-1"></sov:ChildSkill>
+                </sov:Skill>
+                <sov:Skill existsInText="true" id="5530987" name="ETL" whereFound="Found in SKILLS"></sov:Skill>
+              </sov:Subtaxonomy>
+              <sov:Subtaxonomy id="203" name="UNIX and LINUX" percentOfOverall="5" percentOfParentTaxonomy="7">
+                <sov:Skill existsInText="true" id="007925" lastUsed="2019-12-15" name="SHELL SCRIPTING" totalMonths="60" whereFound="Found in SKILLS; WORK HISTORY; POS-1; POS-2"></sov:Skill>
+              </sov:Subtaxonomy>
+              <sov:Subtaxonomy id="341" name="Reporting" percentOfOverall="3" percentOfParentTaxonomy="5">
+                <sov:Skill existsInText="true" id="024116" lastUsed="2019-12-15" name="CRYSTAL REPORTS" totalMonths="46" whereFound="Found in WORK HISTORY; POS-1"></sov:Skill>
+                <sov:Skill existsInText="true" id="004856" lastUsed="2019-12-15" name="PIVOT TABLES" totalMonths="46" whereFound="Found in SUMMARY; WORK HISTORY; POS-1"></sov:Skill>
+                <sov:Skill existsInText="true" id="022369" name="RDBMS" whereFound="Found in SUMMARY"></sov:Skill>
+              </sov:Subtaxonomy>
+              <sov:Subtaxonomy id="195" name="ERP and CRM" percentOfOverall="2" percentOfParentTaxonomy="4">
+                <sov:Skill existsInText="true" id="024676" lastUsed="2019-12-15" name="BASIS" totalMonths="46" whereFound="Found in WORK HISTORY; POS-1"></sov:Skill>
+                <sov:Skill existsInText="true" id="016891" lastUsed="2019-12-15" name="ERP" totalMonths="46" whereFound="Found in WORK HISTORY; POS-1"></sov:Skill>
+              </sov:Subtaxonomy>
+              <sov:Subtaxonomy id="554" name="Business Intelligence" percentOfOverall="2" percentOfParentTaxonomy="3">
+                <sov:Skill childrenLastUsed="2016-02-29" childrenTotalMonths="14" existsInText="false" id="5540954" name="MICROSOFT SSRS">
+                  <sov:ChildSkill existsInText="true" id="554095401" lastUsed="2016-02-29" name="SSRS" totalMonths="14" whereFound="Found in SKILLS; SUMMARY; WORK HISTORY; POS-2"></sov:ChildSkill>
+                </sov:Skill>
+                <sov:Skill existsInText="true" id="5540990" name="T-SQL" whereFound="Found in SKILLS; SUMMARY"></sov:Skill>
+              </sov:Subtaxonomy>
+              <sov:Subtaxonomy id="201" name="Architecture" percentOfOverall="2" percentOfParentTaxonomy="3">
+                <sov:Skill existsInText="true" id="016871" lastUsed="2019-12-15" name="ER STUDIO" totalMonths="46" whereFound="Found in WORK HISTORY; POS-1"></sov:Skill>
+                <sov:Skill existsInText="true" id="022707" name="LIFE CYCLE" whereFound="Found in SUMMARY">
+                  <sov:ChildSkill existsInText="true" id="008214" name="SOFTWARE DEVELOPMENT LIFE CYCLE" whereFound="Found in SUMMARY"></sov:ChildSkill>
+                </sov:Skill>
+                <sov:Skill existsInText="true" id="025956" name="SDLC" whereFound="Found in SUMMARY"></sov:Skill>
+              </sov:Subtaxonomy>
+              <sov:Subtaxonomy id="731" name="User Interface" percentOfOverall="1" percentOfParentTaxonomy="2">
+                <sov:Skill existsInText="true" id="7310067" lastUsed="2019-12-15" name="USER INTERFACE" totalMonths="46" whereFound="Found in WORK HISTORY; POS-1"></sov:Skill>
+              </sov:Subtaxonomy>
+              <sov:Subtaxonomy id="349" name="Operations, Monitoring and Software Management" percentOfOverall="1" percentOfParentTaxonomy="2">
+                <sov:Skill existsInText="true" id="3490044" lastUsed="2019-12-15" name="NETWORKING" totalMonths="46" whereFound="Found in WORK HISTORY; POS-1"></sov:Skill>
+              </sov:Subtaxonomy>
+              <sov:Subtaxonomy id="200" name="QA and QC" percentOfOverall="1" percentOfParentTaxonomy="2">
+                <sov:Skill existsInText="true" id="025857" lastUsed="2019-12-15" name="DATA VALIDATION" totalMonths="46" whereFound="Found in WORK HISTORY; POS-1"></sov:Skill>
+              </sov:Subtaxonomy>
+              <sov:Subtaxonomy id="192" name="Data Mining" percentOfOverall="1" percentOfParentTaxonomy="2">
+                <sov:Skill existsInText="true" id="015020" lastUsed="2019-12-15" name="DATA WAREHOUSING" totalMonths="46" whereFound="Found in WORK HISTORY; POS-1"></sov:Skill>
+              </sov:Subtaxonomy>
+              <sov:Subtaxonomy id="198" name="Network" percentOfOverall="0" percentOfParentTaxonomy="0">
+                <sov:Skill existsInText="true" id="026285" name="VMWARE" whereFound="Found in SKILLS"></sov:Skill>
+              </sov:Subtaxonomy>
+              <sov:Subtaxonomy id="345" name="Middleware and Integration" percentOfOverall="0" percentOfParentTaxonomy="0">
+                <sov:Skill existsInText="true" id="016965" name="ETL" whereFound="Found in SKILLS"></sov:Skill>
+              </sov:Subtaxonomy>
+            </sov:Taxonomy>
+            <sov:Taxonomy id="0" name="Common End-user Software" percentOfOverall="18">
+              <sov:Subtaxonomy id="108" name="Core Office" percentOfOverall="13" percentOfParentTaxonomy="74">
+                <sov:Skill childrenLastUsed="2019-12-15" childrenTotalMonths="46" existsInText="true" id="022841" lastUsed="2019-12-15" name="EXCEL" totalMonths="60" whereFound="Found in SKILLS; SUMMARY; WORK HISTORY; POS-1; POS-2">
+                  <sov:ChildSkill existsInText="true" id="002864" lastUsed="2019-12-15" name="MS EXCEL" totalMonths="46" whereFound="Found in SKILLS; SUMMARY; WORK HISTORY; POS-1"></sov:ChildSkill>
+                </sov:Skill>
+                <sov:Skill existsInText="true" id="024810" name="MICROSOFT EXCEL" whereFound="Found in SUMMARY"></sov:Skill>
+                <sov:Skill existsInText="false" id="023613" name="MICROSOFT POWERPOINT">
+                  <sov:ChildSkill existsInText="true" id="002995" name="MS POWERPOINT" whereFound="Found in SUMMARY"></sov:ChildSkill>
+                  <sov:ChildSkill existsInText="true" id="021977" name="POWERPOINT" whereFound="Found in SUMMARY"></sov:ChildSkill>
+                </sov:Skill>
+                <sov:Skill existsInText="false" id="022961" name="MICROSOFT WORD">
+                  <sov:ChildSkill existsInText="true" id="002379" name="WORD" whereFound="Found in SUMMARY"></sov:ChildSkill>
+                </sov:Skill>
+              </sov:Subtaxonomy>
+              <sov:Subtaxonomy id="229" name="Visual" percentOfOverall="3" percentOfParentTaxonomy="19">
+                <sov:Skill childrenLastUsed="2019-12-15" childrenTotalMonths="46" existsInText="true" id="024751" lastUsed="2019-12-15" name="VISIO" totalMonths="46" whereFound="Found in SKILLS; WORK HISTORY; POS-1">
+                  <sov:ChildSkill existsInText="true" id="003046" lastUsed="2019-12-15" name="MS VISIO" totalMonths="46" whereFound="Found in WORK HISTORY; POS-1"></sov:ChildSkill>
+                  <sov:ChildSkill existsInText="true" id="010578" name="VISIO 2000" whereFound="Found in SKILLS"></sov:ChildSkill>
+                </sov:Skill>
+              </sov:Subtaxonomy>
+              <sov:Subtaxonomy id="228" name="Data-centric" percentOfOverall="1" percentOfParentTaxonomy="7">
+                <sov:Skill existsInText="true" id="014686" lastUsed="2019-12-15" name="CRYSTAL REPORTS" totalMonths="46" whereFound="Found in WORK HISTORY; POS-1"></sov:Skill>
+              </sov:Subtaxonomy>
+            </sov:Taxonomy>
+            <sov:Taxonomy id="69" name="QA and QC" percentOfOverall="3">
+              <sov:Subtaxonomy id="931" name="Software" percentOfOverall="3" percentOfParentTaxonomy="100">
+                <sov:Skill existsInText="true" id="022636" lastUsed="2019-12-15" name="DATA ENTRY" totalMonths="46" whereFound="Found in SUMMARY; WORK HISTORY; POS-1"></sov:Skill>
+                <sov:Skill existsInText="true" id="025856" lastUsed="2019-12-15" name="DATA VALIDATION" totalMonths="46" whereFound="Found in WORK HISTORY; POS-1"></sov:Skill>
+              </sov:Subtaxonomy>
+            </sov:Taxonomy>
+            <sov:Taxonomy id="9" name="Human Resources" percentOfOverall="3">
+              <sov:Subtaxonomy id="574" name="Diversity &amp; Inclusion" percentOfOverall="1" percentOfParentTaxonomy="54">
+                <sov:Skill childrenLastUsed="2019-12-15" childrenTotalMonths="46" existsInText="false" id="9000074" name="EMPLOYEE RESOURCE GROUP">
+                  <sov:ChildSkill existsInText="true" id="9000075" lastUsed="2019-12-15" name="ERP" totalMonths="46" whereFound="Found in WORK HISTORY; POS-1"></sov:ChildSkill>
+                </sov:Skill>
+              </sov:Subtaxonomy>
+              <sov:Subtaxonomy id="577" name="HR Analytics" percentOfOverall="1" percentOfParentTaxonomy="46">
+                <sov:Skill existsInText="true" id="9000104" lastUsed="2019-12-15" name="DATA VALIDATION" totalMonths="46" whereFound="Found in WORK HISTORY; POS-1"></sov:Skill>
+              </sov:Subtaxonomy>
+            </sov:Taxonomy>
+            <sov:Taxonomy id="7" name="Finance" percentOfOverall="3">
+              <sov:Subtaxonomy id="704" name="Investor Relations" percentOfOverall="1" percentOfParentTaxonomy="24">
+                <sov:Skill existsInText="true" id="7000029" lastUsed="2016-02-29" name="INVESTMENT BANKING" totalMonths="14" whereFound="Found in WORK HISTORY; POS-2"></sov:Skill>
+              </sov:Subtaxonomy>
+              <sov:Subtaxonomy id="703" name="Corporate Development" percentOfOverall="1" percentOfParentTaxonomy="24">
+                <sov:Skill existsInText="true" id="7000021" lastUsed="2016-02-29" name="INVESTMENT BANKING" totalMonths="14" whereFound="Found in WORK HISTORY; POS-2"></sov:Skill>
+              </sov:Subtaxonomy>
+              <sov:Subtaxonomy id="234" name="Lending" percentOfOverall="1" percentOfParentTaxonomy="24">
+                <sov:Skill existsInText="true" id="080208" lastUsed="2016-02-29" name="INVESTMENT BANKING" totalMonths="14" whereFound="Found in WORK HISTORY; POS-2"></sov:Skill>
+              </sov:Subtaxonomy>
+              <sov:Subtaxonomy id="236" name="Securities" percentOfOverall="1" percentOfParentTaxonomy="24">
+                <sov:Skill existsInText="true" id="080195" lastUsed="2016-02-29" name="INVESTMENT BANKING" totalMonths="14" whereFound="Found in WORK HISTORY; POS-2"></sov:Skill>
+              </sov:Subtaxonomy>
+              <sov:Subtaxonomy id="237" name="Operations" percentOfOverall="0" percentOfParentTaxonomy="4">
+                <sov:Skill existsInText="true" id="020748" name="LIFE CYCLE" whereFound="Found in SUMMARY"></sov:Skill>
+              </sov:Subtaxonomy>
+            </sov:Taxonomy>
+            <sov:Taxonomy id="1" name="Administrative or Clerical" percentOfOverall="2">
+              <sov:Subtaxonomy id="109" name="Document-centric" percentOfOverall="2" percentOfParentTaxonomy="95">
+                <sov:Skill existsInText="true" id="014123" lastUsed="2019-12-15" name="DATA ENTRY" totalMonths="46" whereFound="Found in SUMMARY; WORK HISTORY; POS-1"></sov:Skill>
+              </sov:Subtaxonomy>
+              <sov:Subtaxonomy id="115" name="Computer Related" percentOfOverall="0" percentOfParentTaxonomy="5">
+                <sov:Skill existsInText="true" id="015035" name="DATABASE MANAGEMENT" whereFound="Found in SUMMARY"></sov:Skill>
+              </sov:Subtaxonomy>
+            </sov:Taxonomy>
+            <sov:Taxonomy id="13" name="Manufacturing" percentOfOverall="1">
+              <sov:Subtaxonomy id="362" name="General" percentOfOverall="1" percentOfParentTaxonomy="50">
+                <sov:Skill existsInText="true" id="024327" lastUsed="2016-02-29" name="PRODUCTION ENVIRONMENT" totalMonths="14" whereFound="Found in WORK HISTORY; POS-2"></sov:Skill>
+              </sov:Subtaxonomy>
+              <sov:Subtaxonomy id="364" name="Equipment" percentOfOverall="1" percentOfParentTaxonomy="50">
+                <sov:Skill existsInText="true" id="022116" lastUsed="2016-02-29" name="MAINTENANCE" totalMonths="14" whereFound="Found in WORK HISTORY; POS-2"></sov:Skill>
+              </sov:Subtaxonomy>
+            </sov:Taxonomy>
+            <sov:Taxonomy id="71" name="Strategy and Planning" percentOfOverall="1">
+              <sov:Subtaxonomy id="876" name="Workflow and Processes" percentOfOverall="1" percentOfParentTaxonomy="100">
+                <sov:Skill existsInText="true" id="022626" lastUsed="2019-12-15" name="BUSINESS REQUIREMENTS" totalMonths="46" whereFound="Found in WORK HISTORY; POS-1"></sov:Skill>
+              </sov:Subtaxonomy>
+            </sov:Taxonomy>
+            <sov:Taxonomy id="5" name="Engineering" percentOfOverall="1">
+              <sov:Subtaxonomy id="137" name="Industrial" percentOfOverall="1" percentOfParentTaxonomy="84">
+                <sov:Skill existsInText="true" id="022542" lastUsed="2016-02-29" name="LABORATORY" totalMonths="14" whereFound="Found in WORK HISTORY; POS-2"></sov:Skill>
+              </sov:Subtaxonomy>
+              <sov:Subtaxonomy id="307" name="General Engineering" percentOfOverall="0" percentOfParentTaxonomy="16">
+                <sov:Skill existsInText="true" id="020750" name="LIFE CYCLE" whereFound="Found in SUMMARY"></sov:Skill>
+              </sov:Subtaxonomy>
+            </sov:Taxonomy>
+            <sov:Taxonomy id="31" name="Technical Writing" percentOfOverall="0">
+              <sov:Subtaxonomy id="429" name="Specs and Documentation" percentOfOverall="0" percentOfParentTaxonomy="50">
+                <sov:Skill existsInText="true" id="022620" name="DOCUMENTATION" whereFound="Found in SUMMARY"></sov:Skill>
+              </sov:Subtaxonomy>
+              <sov:Subtaxonomy id="430" name="General" percentOfOverall="0" percentOfParentTaxonomy="50">
+                <sov:Skill existsInText="true" id="009845" name="TRANSLATING" whereFound="Found in SUMMARY"></sov:Skill>
+              </sov:Subtaxonomy>
+            </sov:Taxonomy>
+            <sov:Taxonomy id="90" name="Personal Attributes" percentOfOverall="0">
+              <sov:Subtaxonomy id="528" name="Attitude" percentOfOverall="0" percentOfParentTaxonomy="100">
+                <sov:Skill existsInText="true" id="026529" name="TEAM PLAYER" whereFound="Found in SUMMARY"></sov:Skill>
+              </sov:Subtaxonomy>
+            </sov:Taxonomy>
+          </sov:TaxonomyRoot>
+        </sov:SkillsTaxonomyOutput>
+      </sov:ExperienceSummary>
+      <sov:Sections>
+        <sov:Section ends="36" sectionType="SUMMARY" starts="6">PROFESSIONAL SUMMARY</sov:Section>
+        <sov:Section ends="88" sectionType="WORK HISTORY" starts="37">WORK EXPERIENCE</sov:Section>
+        <sov:Section ends="97" sectionType="SKILLS" starts="89">TECHNICAL SKILLS</sov:Section>
+      </sov:Sections>
+      <sov:ReservedData>
+        <sov:Phones>
+          <sov:Phone>Phone No: 3478039767</sov:Phone>
+          <sov:Phone>3478039767</sov:Phone>
+        </sov:Phones>
+        <sov:Names>
+          <sov:Name>LAKSHMI CHARAN</sov:Name>
+        </sov:Names>
+        <sov:EmailAddresses>
+          <sov:EmailAddress>Charan0945@gmail.com</sov:EmailAddress>
+        </sov:EmailAddresses>
+        <sov:OtherData>
+          <sov:OtherDatum>35488 crescent ct</sov:OtherDatum>
+        </sov:OtherData>
+      </sov:ReservedData>
+      <sov:ParsedTextLength>5269</sov:ParsedTextLength>
+      <sov:ParseTime>750</sov:ParseTime>
+      <sov:ResumeQuality>
+        <sov:Assessments>
+          <sov:Assessment>
+            <sov:Level>Fatal Problems Found</sov:Level>
+            <sov:Findings>
+              <sov:Information>[Sovren:414;] We found no EDUCATION HISTORY for the candidate. A resume should always include an education history section.</sov:Information>
+            </sov:Findings>
+          </sov:Assessment>
+          <sov:Assessment>
+            <sov:Level>Suggested Improvements</sov:Level>
+            <sov:Findings>
+              <sov:Information>[Sovren:112;] The following section was identified as a skills section type: 'TECHNICAL SKILLS'. Skills should not be in a separate section, but instead, each skill should be included in the descriptions of work history or education.</sov:Information>
+            </sov:Findings>
+          </sov:Assessment>
+        </sov:Assessments>
+      </sov:ResumeQuality>
+      <sov:LicenseSerialNumber>0164432d-55f8-474b-adaa-3b0a497f3374</sov:LicenseSerialNumber>
+      <sov:ParserConfigurationString>Coverage.FindSkillsInEntireDocument = True; Coverage.IgnoreCaseForSkills = True; Coverage.PersonalAttributes = True; Coverage.Training = True; Culture.CountryCodeForUnitedKingdomIsUK = True; Culture.DefaultCountryCode = US; Culture.Language = English; Culture.PreferEnglishVersionIfTwoLanguagesInDocument = False; Data.UserDefinedParsing = False; OutputFormat.AssumeCompanyNameFromPrecedingJob = False; OutputFormat.ContactMethod.PackStyle = Split; OutputFormat.DateOutputStyle = ExplicitlyKnownDateInfoOnly; OutputFormat.NestJobsBasedOnDateRanges = True; OutputFormat.NormalizeRegions = False; OutputFormat.SkillsStyle = Default; OutputFormat.StripParsedDataFromPositionHistoryDescription = True; OutputFormat.TelcomNumber.Style = Raw; OutputFormat.XmlFormat = HrXmlResume25; Runtime.EffectiveHardTimeout = 540000; Runtime.SoftTimeout = 360000</sov:ParserConfigurationString>
+      <sov:ParserVersion>9.3.3.0</sov:ParserVersion>
+      <sov:DigitalSignature></sov:DigitalSignature>
+    </sov:ResumeUserArea>
+  </UserArea>
+</Resume>

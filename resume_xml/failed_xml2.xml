@@ -1,0 +1,525 @@
+<Resume xml:lang="en" xmlns="http://ns.hr-xml.org/2006-02-28" xmlns:sov="http://sovren.com/hr-xml/2006-02-28">
+  <ResumeId>
+    <IdValue></IdValue>
+  </ResumeId>
+  <StructuredXMLResume>
+    <ContactInfo>
+      <PersonName>
+        <FormattedName>***</FormattedName>
+        <GivenName>***</GivenName>
+        <MiddleName>***</MiddleName>
+        <FamilyName>***</FamilyName>
+      </PersonName>
+      <ContactMethod>
+        <WhenAvailable>anytime</WhenAvailable>
+        <PostalAddress>
+          <CountryCode>US</CountryCode>
+          <PostalCode>45458</PostalCode>
+          <Region>Ohio</Region>
+          <Municipality>Dayton</Municipality>
+          <DeliveryAddress>
+            <AddressLine>***</AddressLine>
+          </DeliveryAddress>
+        </PostalAddress>
+      </ContactMethod>
+      <ContactMethod>
+        <Use>personal</Use>
+        <Location>onPerson</Location>
+        <WhenAvailable>anytime</WhenAvailable>
+        <Mobile>
+          <FormattedNumber>***</FormattedNumber>
+        </Mobile>
+      </ContactMethod>
+      <ContactMethod>
+        <Use>personal</Use>
+        <Location>onPerson</Location>
+        <WhenAvailable>anytime</WhenAvailable>
+        <InternetEmailAddress>***</InternetEmailAddress>
+      </ContactMethod>
+    </ContactInfo>
+    <Objective>Seeking an Civil engineer position where I can learn, grow and thrive.</Objective>
+    <EmploymentHistory>
+      <EmployerOrg>
+        <EmployerOrgName>Dr. Robert Amundsen</EmployerOrgName>
+        <PositionHistory positionType="directHire">
+          <Title>Graduate Assistant</Title>
+          <OrgName>
+            <OrganizationName>NYIT</OrganizationName>
+          </OrgName>
+          <Description>? Provided a clean energy plan for Andhra Pradesh state and determined ways to reduce the use of thermal power and promote the solar and wind power.
+? Designed farmer friendly solar based electric fence for rural agriculture by using solar panels to charge the batteries.</Description>
+          <StartDate>
+            <YearMonth>2015-01</YearMonth>
+          </StartDate>
+          <EndDate>
+            <YearMonth>2016-05</YearMonth>
+          </EndDate>
+          <JobCategory>
+            <TaxonomyName>Job Level</TaxonomyName>
+            <CategoryCode>Experienced (non-manager)</CategoryCode>
+          </JobCategory>
+          <UserArea>
+            <sov:PositionHistoryUserArea>
+              <sov:Id>POS-1</sov:Id>
+              <sov:CompanyNameProbabilityInterpretation internalUseOnly="BK">Confident</sov:CompanyNameProbabilityInterpretation>
+              <sov:PositionTitleProbabilityInterpretation internalUseOnly="SN">Confident</sov:PositionTitleProbabilityInterpretation>
+            </sov:PositionHistoryUserArea>
+          </UserArea>
+        </PositionHistory>
+      </EmployerOrg>
+      <EmployerOrg>
+        <EmployerOrgName>Advait homes</EmployerOrgName>
+        <PositionHistory positionType="directHire">
+          <Title>Civil Engineer</Title>
+          <OrgName>
+            <OrganizationName>Advait homes</OrganizationName>
+          </OrgName>
+          <OrgInfo>
+            <PositionLocation>
+              <CountryCode>IN</CountryCode>
+              <Municipality>Hyderabad</Municipality>
+            </PositionLocation>
+          </OrgInfo>
+          <Description>? Worked as part of a team of engineers and draftsmen and was responsible for performing safety checks on a residential building and also made a plan view drawing of second and third floors using AutoCAD.
+? Involved with checking of pre-stressing tendon profiles and rebar layouts as per structural drawings, quality control, concrete mix design, onsite cube testing and quantity estimation.
+? Worked as a site inspector and helped to supervise the execution of blueprints and the implementation of their designs and performed safety and health checks as per Indian act in 2009.
+? Created budgets and implemented and managed all Sworn Construction Statements for banks and Title Companies.
+? Give introduction presentations to new Project Teams regarding the implementation of the  RFI (Request for Information) Tool.
+? Coordinated construction schedules and implementation of job selections and specifications for each project with subcontractors and vendors.</Description>
+          <StartDate>
+            <YearMonth>2014-05</YearMonth>
+          </StartDate>
+          <EndDate>
+            <YearMonth>2014-12</YearMonth>
+          </EndDate>
+          <JobCategory>
+            <TaxonomyName>Skills taxonomy</TaxonomyName>
+            <CategoryCode>Engineering ? Techniques</CategoryCode>
+            <Comments>Engineering describes 41% of this job</Comments>
+          </JobCategory>
+          <JobCategory>
+            <TaxonomyName>Job Level</TaxonomyName>
+            <CategoryCode>Experienced (non-manager)</CategoryCode>
+          </JobCategory>
+          <UserArea>
+            <sov:PositionHistoryUserArea>
+              <sov:Id>POS-2</sov:Id>
+              <sov:CompanyNameProbabilityInterpretation internalUseOnly="BS">Confident</sov:CompanyNameProbabilityInterpretation>
+              <sov:PositionTitleProbabilityInterpretation internalUseOnly="ST">Confident</sov:PositionTitleProbabilityInterpretation>
+            </sov:PositionHistoryUserArea>
+          </UserArea>
+        </PositionHistory>
+      </EmployerOrg>
+      <EmployerOrg>
+        <EmployerOrgName></EmployerOrgName>
+        <PositionHistory positionType="internship">
+          <Title>Summer Intern, VSF</Title>
+          <OrgName>
+            <OrganizationName></OrganizationName>
+          </OrgName>
+          <Description>? Worked under the civil engineer in testing the soil for laying the roads and bridges and I was a part in the surveying group. The whole project is dt management program with project manager including quality control procedures, safety, temporary utilities, staging areas, equipment and manpower.
+? Created and implemented a Construction Management Progress Report, for the Construction Management Department, and recorded all company projects progress weekly.</Description>
+          <StartDate>
+            <YearMonth>2013-05</YearMonth>
+          </StartDate>
+          <EndDate>
+            <YearMonth>2013-07</YearMonth>
+          </EndDate>
+          <JobCategory>
+            <TaxonomyName>Skills taxonomy</TaxonomyName>
+            <CategoryCode>Engineering ? Civil</CategoryCode>
+            <Comments>Engineering describes 56% of this job</Comments>
+          </JobCategory>
+          <JobCategory>
+            <TaxonomyName>Job Level</TaxonomyName>
+            <CategoryCode>Entry Level</CategoryCode>
+          </JobCategory>
+          <UserArea>
+            <sov:PositionHistoryUserArea>
+              <sov:Id>POS-3</sov:Id>
+              <sov:PositionTitleProbabilityInterpretation internalUseOnly="SQ">Confident</sov:PositionTitleProbabilityInterpretation>
+              <sov:Subtitles>
+                <sov:Subtitle>Summer Intern</sov:Subtitle>
+              </sov:Subtitles>
+            </sov:PositionHistoryUserArea>
+          </UserArea>
+        </PositionHistory>
+      </EmployerOrg>
+    </EmploymentHistory>
+    <EducationHistory>
+      <SchoolOrInstitution schoolType="UNSPECIFIED">
+        <Degree degreeType="masters">
+          <DegreeName>M.S in Engineering</DegreeName>
+          <DegreeDate>
+            <YearMonth>2016-05</YearMonth>
+          </DegreeDate>
+          <DegreeMajor>
+            <Name>(Energy Management), NYIT, New York</Name>
+          </DegreeMajor>
+          <DegreeMeasure>
+            <EducationalMeasure>
+              <MeasureSystem>GPA</MeasureSystem>
+              <MeasureValue>
+                <StringValue>3.100000000000000e+00</StringValue>
+              </MeasureValue>
+              <LowestPossibleValue>
+                <StringValue>0</StringValue>
+              </LowestPossibleValue>
+              <HighestPossibleValue>
+                <StringValue>4</StringValue>
+              </HighestPossibleValue>
+            </EducationalMeasure>
+          </DegreeMeasure>
+          <DatesOfAttendance>
+            <StartDate>
+              <AnyDate>notKnown</AnyDate>
+            </StartDate>
+            <EndDate>
+              <YearMonth>2016-05</YearMonth>
+            </EndDate>
+          </DatesOfAttendance>
+          <Comments>M.S in Engineering (Energy Management), NYIT, New York	CGPA: 3.10/4, May 2016</Comments>
+          <UserArea>
+            <sov:DegreeUserArea>
+              <sov:Id>DEG-1</sov:Id>
+              <sov:NormalizedGPA>7.750000000000000e-01</sov:NormalizedGPA>
+            </sov:DegreeUserArea>
+          </UserArea>
+        </Degree>
+      </SchoolOrInstitution>
+      <SchoolOrInstitution schoolType="university">
+        <School>
+          <SchoolName>JNTU</SchoolName>
+        </School>
+        <Degree degreeType="bachelors">
+          <DegreeName>Bachelor of Technology in Civil Engineering</DegreeName>
+          <DegreeDate>
+            <YearMonth>2014-05</YearMonth>
+          </DegreeDate>
+          <DegreeMajor>
+            <Name>ABET accredited</Name>
+          </DegreeMajor>
+          <DegreeMeasure>
+            <EducationalMeasure>
+              <MeasureSystem>GPA</MeasureSystem>
+              <MeasureValue>
+                <StringValue>3.350000000000000e+00</StringValue>
+              </MeasureValue>
+              <LowestPossibleValue>
+                <StringValue>0</StringValue>
+              </LowestPossibleValue>
+              <HighestPossibleValue>
+                <StringValue>4</StringValue>
+              </HighestPossibleValue>
+            </EducationalMeasure>
+          </DegreeMeasure>
+          <DatesOfAttendance>
+            <StartDate>
+              <AnyDate>notKnown</AnyDate>
+            </StartDate>
+            <EndDate>
+              <YearMonth>2014-05</YearMonth>
+            </EndDate>
+          </DatesOfAttendance>
+          <Comments>Bachelor of Technology in Civil Engineering (ABET accredited, USA) JNTU, India   CGPA: 3.35/4, May 2014</Comments>
+          <UserArea>
+            <sov:DegreeUserArea>
+              <sov:Id>DEG-2</sov:Id>
+              <sov:NormalizedGPA>8.380000000000000e-01</sov:NormalizedGPA>
+            </sov:DegreeUserArea>
+          </UserArea>
+        </Degree>
+      </SchoolOrInstitution>
+    </EducationHistory>
+    <Qualifications>
+      <QualificationSummary>COMPUTER SKILLS
+RISA2D	AUTOCAD	GIS	MS Excel	MS WORD   Primavera   MS Project</QualificationSummary>
+    </Qualifications>
+    <Languages>
+      <Language>
+        <LanguageCode>en</LanguageCode>
+        <Read>true</Read>
+        <Write>true</Write>
+        <Speak>true</Speak>
+        <Comments>[RESUME_LANGUAGE]</Comments>
+      </Language>
+    </Languages>
+    <Achievements>
+      <Achievement>
+        <Description>MEMBERSHIPS AND ACHIEVEMENTS</Description>
+      </Achievement>
+    </Achievements>
+    <RevisionDate>2019-12-15</RevisionDate>
+  </StructuredXMLResume>
+  <NonXMLResume>
+    <TextResume>LAKSHMI CHARAN BOBBA,
+219 Sailboat run, Dayton, Ohio-45458   Mobile: (347)-803-9767	charanscivil@gmail.com
+
+OBJECTIVE: Seeking an Civil engineer position where I can learn, grow and thrive.
+
+EDUCATION
+M.S in Engineering (Energy Management), NYIT, New York	CGPA: 3.10/4, May 2016
+Bachelor of Technology in Civil Engineering (ABET accredited, USA) JNTU, India   CGPA: 3.35/4, May 2014
+
+
+COMPUTER SKILLS
+RISA2D	AUTOCAD	GIS	MS Excel	MS WORD   Primavera   MS Project
+
+RELATED EXPERIENCE
+Graduate Assistant (Advisor Dr. Robert Amundsen), NYIT	Jan 2015-May 2016
+? Provided a clean energy plan for Andhra Pradesh state and determined ways to reduce the use of thermal power and promote the solar and wind power.
+? Designed farmer friendly solar based electric fence for rural agriculture by using solar panels to charge the batteries.
+
+Civil Engineer, Advait homes, Hyderabad, India	May-Dec, 2014
+? Worked as part of a team of engineers and draftsmen and was responsible for performing safety checks on a residential building and also made a plan view drawing of second and third floors using AutoCAD.
+? Involved with checking of pre-stressing tendon profiles and rebar layouts as per structural drawings, quality control, concrete mix design, onsite cube testing and quantity estimation.
+? Worked as a site inspector and helped to supervise the execution of blueprints and the implementation of their designs and performed safety and health checks as per Indian act in 2009.
+? Created budgets and implemented and managed all Sworn Construction Statements for banks and Title Companies.
+? Give introduction presentations to new Project Teams regarding the implementation of the  RFI (Request for Information) Tool.
+? Coordinated construction schedules and implementation of job selections and specifications for each project with subcontractors and vendors.
+
+Summer Intern, VSF projects infra ltd, India	May-July, 2013
+? Worked under the civil engineer in testing the soil for laying the roads and bridges and I was a part in the surveying group. The whole project is dt management program with project manager including quality control procedures, safety, temporary utilities, staging areas, equipment and manpower.
+? Created and implemented a Construction Management Progress Report, for the Construction Management Department, and recorded all company projects progress weekly.
+
+ACADEMIC PROJECTS
+Design of an under-ground water tunnel, JNTU	May 2014
+? Designed a 1.2mile under-ground water tunnel and performed surveying and used trench pipes which provided an economical design by reducing the cost by 50%.
+? Inspected the project site to monitor progress and ensure conformance to design specifications and safety standards.
+
+Analysis of Green Buildings	Oct 2013
+? Analyzed methods of construction and the advantages of green building by on-site evaluation of the L&amp;T EDRC project.
+? Submitted a detailed report providing advantages and plan for solar powered green houses in rural areas by performing initial surveying.
+
+MEMBERSHIPS AND ACHIEVEMENTS
+? Student member of AISC and ACI since May 2013.</TextResume>
+  </NonXMLResume>
+  <UserArea>
+    <sov:ResumeUserArea>
+      <sov:Culture>
+        <sov:Language>en</sov:Language>
+        <sov:Country>US</sov:Country>
+        <sov:CultureInfo>en-US</sov:CultureInfo>
+      </sov:Culture>
+      <sov:ExperienceSummary>
+        <sov:Description>LAKSHMI CHARAN BOBBA's experience appears to be somewhat concentrated in Engineering (mostly Power Engineering) and slightly concentrated in Construction Non-Laborer (mostly Estimating). LAKSHMI CHARAN BOBBA's experience appears to be lower-to-mid level, with about 2 years of experience.</sov:Description>
+        <sov:MonthsOfWorkExperience>26</sov:MonthsOfWorkExperience>
+        <sov:AverageMonthsPerEmployer>8</sov:AverageMonthsPerEmployer>
+        <sov:FulltimeDirectHirePredictiveIndex>33</sov:FulltimeDirectHirePredictiveIndex>
+        <sov:MonthsOfManagementExperience>0</sov:MonthsOfManagementExperience>
+        <sov:HighestManagementScore>0</sov:HighestManagementScore>
+        <sov:ExecutiveType>none</sov:ExecutiveType>
+        <sov:ManagementStory></sov:ManagementStory>
+        <sov:SkillsTaxonomyOutput>
+          <sov:TaxonomyRoot name="Sovren">
+            <sov:Taxonomy id="5" name="Engineering" percentOfOverall="42">
+              <sov:Subtaxonomy id="308" name="Power Engineering" percentOfOverall="8" percentOfParentTaxonomy="19">
+                <sov:Skill existsInText="true" id="080330" lastUsed="2014-12-31" name="CIVIL ENGINEER" totalMonths="10" whereFound="Found in WORK HISTORY; POS-2; POS-3"></sov:Skill>
+                <sov:Skill existsInText="true" id="022119" lastUsed="2014-12-31" name="CONCRETE" totalMonths="8" whereFound="Found in WORK HISTORY; POS-2"></sov:Skill>
+                <sov:Skill existsInText="false" id="025263" name="SURETRAK">
+                  <sov:ChildSkill existsInText="true" id="005402" name="PRIMAVERA" whereFound="Found in SKILLS"></sov:ChildSkill>
+                </sov:Skill>
+              </sov:Subtaxonomy>
+              <sov:Subtaxonomy id="264" name="Techniques" percentOfOverall="8" percentOfParentTaxonomy="18">
+                <sov:Skill existsInText="true" id="080636" lastUsed="2014-12-31" name="BLUEPRINTS" totalMonths="8" whereFound="Found in WORK HISTORY; POS-2"></sov:Skill>
+                <sov:Skill existsInText="true" id="016277" lastUsed="2016-05-01" name="ENERGY MANAGEMENT" whereFound="Found in EDUCATION; DEG-1"></sov:Skill>
+                <sov:Skill existsInText="true" id="080635" lastUsed="2014-12-31" name="ESTIMATION" totalMonths="8" whereFound="Found in WORK HISTORY; POS-2"></sov:Skill>
+              </sov:Subtaxonomy>
+              <sov:Subtaxonomy id="133" name="Civil" percentOfOverall="6" percentOfParentTaxonomy="14">
+                <sov:Skill existsInText="true" id="080961" lastUsed="2014-12-31" name="CIVIL ENGINEER" totalMonths="10" whereFound="Found in WORK HISTORY; POS-2; POS-3"></sov:Skill>
+                <sov:Skill existsInText="true" id="022209" lastUsed="2014-05-01" name="CIVIL ENGINEERING" whereFound="Found in EDUCATION; DEG-2"></sov:Skill>
+              </sov:Subtaxonomy>
+              <sov:Subtaxonomy id="143" name="Process" percentOfOverall="5" percentOfParentTaxonomy="11">
+                <sov:Skill existsInText="true" id="006270" lastUsed="2014-12-31" name="QUALITY CONTROL" totalMonths="10" whereFound="Found in WORK HISTORY; POS-2; POS-3"></sov:Skill>
+              </sov:Subtaxonomy>
+              <sov:Subtaxonomy id="298" name="Surveying" percentOfOverall="4" percentOfParentTaxonomy="10">
+                <sov:Skill existsInText="true" id="022753" lastUsed="2013-07-01" name="SURVEYING" totalMonths="2" whereFound="Found in PROJECT_HEADERS; WORK HISTORY; POS-3"></sov:Skill>
+              </sov:Subtaxonomy>
+              <sov:Subtaxonomy id="263" name="Other" percentOfOverall="3" percentOfParentTaxonomy="6">
+                <sov:Skill existsInText="true" id="080645" lastUsed="2014-12-31" name="BLUEPRINTS" totalMonths="8" whereFound="Found in WORK HISTORY; POS-2"></sov:Skill>
+              </sov:Subtaxonomy>
+              <sov:Subtaxonomy id="307" name="General Engineering" percentOfOverall="3" percentOfParentTaxonomy="6">
+                <sov:Skill existsInText="true" id="080470" lastUsed="2014-12-31" name="ESTIMATION" totalMonths="8" whereFound="Found in WORK HISTORY; POS-2"></sov:Skill>
+              </sov:Subtaxonomy>
+              <sov:Subtaxonomy id="268" name="RF" percentOfOverall="3" percentOfParentTaxonomy="6">
+                <sov:Skill existsInText="true" id="007051" lastUsed="2014-12-31" name="RFI" totalMonths="8" whereFound="Found in WORK HISTORY; POS-2"></sov:Skill>
+              </sov:Subtaxonomy>
+              <sov:Subtaxonomy id="297" name="Transportation" percentOfOverall="1" percentOfParentTaxonomy="3">
+                <sov:Skill existsInText="true" id="025692" lastUsed="2013-07-01" name="BRIDGES" totalMonths="2" whereFound="Found in WORK HISTORY; POS-3"></sov:Skill>
+              </sov:Subtaxonomy>
+              <sov:Subtaxonomy id="309" name="Stress Analysis and Testing" percentOfOverall="1" percentOfParentTaxonomy="2">
+                <sov:Skill existsInText="true" id="026914" name="AISC" whereFound="Found in PROJECT_HEADERS; WORK HISTORY"></sov:Skill>
+              </sov:Subtaxonomy>
+              <sov:Subtaxonomy id="296" name="Water, Wastewater, Soil, Hydrology" percentOfOverall="1" percentOfParentTaxonomy="2">
+                <sov:Skill existsInText="true" id="023397" name="GROUND WATER" whereFound="Found in PROJECT_HEADERS; WORK HISTORY"></sov:Skill>
+              </sov:Subtaxonomy>
+              <sov:Subtaxonomy id="306" name="Certifications" percentOfOverall="1" percentOfParentTaxonomy="2">
+                <sov:Skill existsInText="true" id="011582" name="ACI" whereFound="Found in PROJECT_HEADERS; WORK HISTORY"></sov:Skill>
+              </sov:Subtaxonomy>
+              <sov:Subtaxonomy id="142" name="Plant" percentOfOverall="1" percentOfParentTaxonomy="2">
+                <sov:Skill existsInText="true" id="007353" name="SAFETY STANDARDS" whereFound="Found in PROJECT_HEADERS; WORK HISTORY"></sov:Skill>
+              </sov:Subtaxonomy>
+            </sov:Taxonomy>
+            <sov:Taxonomy id="22" name="Construction Non-Laborer" percentOfOverall="14">
+              <sov:Subtaxonomy id="380" name="Estimating" percentOfOverall="5" percentOfParentTaxonomy="36">
+                <sov:Skill existsInText="true" id="026946" lastUsed="2014-12-31" name="BUDGETS" totalMonths="8" whereFound="Found in WORK HISTORY; POS-2"></sov:Skill>
+                <sov:Skill existsInText="true" id="023407" lastUsed="2014-12-31" name="ESTIMATION" totalMonths="8" whereFound="Found in WORK HISTORY; POS-2"></sov:Skill>
+              </sov:Subtaxonomy>
+              <sov:Subtaxonomy id="389" name="General Tasks and Equipment" percentOfOverall="3" percentOfParentTaxonomy="18">
+                <sov:Skill existsInText="true" id="011740" lastUsed="2014-12-31" name="BLUEPRINTS" totalMonths="8" whereFound="Found in WORK HISTORY; POS-2"></sov:Skill>
+              </sov:Subtaxonomy>
+              <sov:Subtaxonomy id="381" name="Supervision" percentOfOverall="2" percentOfParentTaxonomy="16">
+                <sov:Skill existsInText="true" id="022283" lastUsed="2013-07-01" name="CONSTRUCTION MANAGEMENT" totalMonths="2" whereFound="Found in WORK HISTORY; POS-3"></sov:Skill>
+                <sov:Skill existsInText="false" id="025261" name="SURETRAK">
+                  <sov:ChildSkill existsInText="true" id="005404" name="PRIMAVERA" whereFound="Found in SKILLS"></sov:ChildSkill>
+                </sov:Skill>
+              </sov:Subtaxonomy>
+              <sov:Subtaxonomy id="382" name="Inspections" percentOfOverall="2" percentOfParentTaxonomy="12">
+                <sov:Skill existsInText="true" id="011581" name="ACI" whereFound="Found in PROJECT_HEADERS; WORK HISTORY"></sov:Skill>
+                <sov:Skill existsInText="true" id="023196" name="SITE EVALUATION" whereFound="Found in PROJECT_HEADERS; WORK HISTORY"></sov:Skill>
+              </sov:Subtaxonomy>
+              <sov:Subtaxonomy id="393" name="Civil" percentOfOverall="1" percentOfParentTaxonomy="9">
+                <sov:Skill existsInText="true" id="013203" lastUsed="2014-05-01" name="CIVIL ENGINEERING" whereFound="Found in EDUCATION; DEG-2"></sov:Skill>
+              </sov:Subtaxonomy>
+              <sov:Subtaxonomy id="388" name="Transportation" percentOfOverall="1" percentOfParentTaxonomy="9">
+                <sov:Skill existsInText="true" id="011916" lastUsed="2013-07-01" name="BRIDGES" totalMonths="2" whereFound="Found in WORK HISTORY; POS-3"></sov:Skill>
+              </sov:Subtaxonomy>
+            </sov:Taxonomy>
+            <sov:Taxonomy id="4" name="CAD/CAM" percentOfOverall="9">
+              <sov:Subtaxonomy id="357" name="Engineering" percentOfOverall="5" percentOfParentTaxonomy="50">
+                <sov:Skill existsInText="true" id="0025252" lastUsed="2014-12-31" name="AUTOCAD" totalMonths="8" whereFound="Found in SKILLS; WORK HISTORY; POS-2"></sov:Skill>
+              </sov:Subtaxonomy>
+              <sov:Subtaxonomy id="356" name="Architectural" percentOfOverall="5" percentOfParentTaxonomy="50">
+                <sov:Skill existsInText="true" id="0025251" lastUsed="2014-12-31" name="AUTOCAD" totalMonths="8" whereFound="Found in SKILLS; WORK HISTORY; POS-2"></sov:Skill>
+              </sov:Subtaxonomy>
+            </sov:Taxonomy>
+            <sov:Taxonomy id="10" name="Information Technology" percentOfOverall="8">
+              <sov:Subtaxonomy id="193" name="Database" percentOfOverall="4" percentOfParentTaxonomy="53">
+                <sov:Skill existsInText="true" id="025538" lastUsed="2013-07-01" name="PROGRESS" totalMonths="2" whereFound="Found in PROJECT_HEADERS; WORK HISTORY; POS-3"></sov:Skill>
+              </sov:Subtaxonomy>
+              <sov:Subtaxonomy id="199" name="Project Management" percentOfOverall="2" percentOfParentTaxonomy="22">
+                <sov:Skill existsInText="true" id="005403" name="PRIMAVERA" whereFound="Found in SKILLS"></sov:Skill>
+                <sov:Skill existsInText="true" id="022909" lastUsed="2013-07-01" name="PROJECT MANAGER" totalMonths="2" whereFound="Found in WORK HISTORY; POS-3"></sov:Skill>
+              </sov:Subtaxonomy>
+              <sov:Subtaxonomy id="554" name="Business Intelligence" percentOfOverall="1" percentOfParentTaxonomy="12">
+                <sov:Skill existsInText="false" id="5540950" name="MICROSOFT PROJECT">
+                  <sov:ChildSkill existsInText="true" id="554095002" name="MS PROJECT" whereFound="Found in SKILLS"></sov:ChildSkill>
+                </sov:Skill>
+              </sov:Subtaxonomy>
+              <sov:Subtaxonomy id="204" name="Programming" percentOfOverall="0" percentOfParentTaxonomy="6">
+                <sov:Skill existsInText="true" id="022952" name="MS PROJECT" whereFound="Found in SKILLS"></sov:Skill>
+              </sov:Subtaxonomy>
+              <sov:Subtaxonomy id="344" name="GIS" percentOfOverall="0" percentOfParentTaxonomy="6">
+                <sov:Skill existsInText="true" id="018427" name="GIS" whereFound="Found in SKILLS"></sov:Skill>
+              </sov:Subtaxonomy>
+            </sov:Taxonomy>
+            <sov:Taxonomy id="27" name="Light Technical/Trades/Skilled Labor" percentOfOverall="8">
+              <sov:Subtaxonomy id="293" name="Other" percentOfOverall="8" percentOfParentTaxonomy="100">
+                <sov:Skill existsInText="true" id="011737" lastUsed="2014-12-31" name="BLUEPRINTS" totalMonths="8" whereFound="Found in WORK HISTORY; POS-2"></sov:Skill>
+                <sov:Skill existsInText="true" id="014141" lastUsed="2014-12-31" name="CONCRETE" totalMonths="8" whereFound="Found in WORK HISTORY; POS-2"></sov:Skill>
+                <sov:Skill existsInText="true" id="023408" lastUsed="2014-12-31" name="ESTIMATION" totalMonths="8" whereFound="Found in WORK HISTORY; POS-2"></sov:Skill>
+              </sov:Subtaxonomy>
+            </sov:Taxonomy>
+            <sov:Taxonomy id="6" name="Environmental" percentOfOverall="7">
+              <sov:Subtaxonomy id="330" name="Water" percentOfOverall="5" percentOfParentTaxonomy="76">
+                <sov:Skill existsInText="true" id="023649" lastUsed="2014-12-31" name="CIVIL ENGINEER" totalMonths="10" whereFound="Found in WORK HISTORY; POS-2; POS-3"></sov:Skill>
+                <sov:Skill existsInText="true" id="023398" name="GROUND WATER" whereFound="Found in PROJECT_HEADERS; WORK HISTORY"></sov:Skill>
+              </sov:Subtaxonomy>
+              <sov:Subtaxonomy id="332" name="Remediation, Mitigation, Cleanup, Removal" percentOfOverall="1" percentOfParentTaxonomy="12">
+                <sov:Skill existsInText="true" id="023197" name="SITE EVALUATION" whereFound="Found in PROJECT_HEADERS; WORK HISTORY"></sov:Skill>
+              </sov:Subtaxonomy>
+              <sov:Subtaxonomy id="335" name="Compliance, Licensing, Certifications" percentOfOverall="1" percentOfParentTaxonomy="12">
+                <sov:Skill existsInText="true" id="011583" name="ACI" whereFound="Found in PROJECT_HEADERS; WORK HISTORY"></sov:Skill>
+              </sov:Subtaxonomy>
+            </sov:Taxonomy>
+            <sov:Taxonomy id="80" name="General Management" percentOfOverall="5">
+              <sov:Subtaxonomy id="516" name="Budget Related" percentOfOverall="5" percentOfParentTaxonomy="100">
+                <sov:Skill existsInText="true" id="026949" lastUsed="2014-12-31" name="BUDGETS" totalMonths="8" whereFound="Found in WORK HISTORY; POS-2"></sov:Skill>
+                <sov:Skill existsInText="true" id="016952" lastUsed="2014-12-31" name="ESTIMATION" totalMonths="8" whereFound="Found in WORK HISTORY; POS-2"></sov:Skill>
+              </sov:Subtaxonomy>
+            </sov:Taxonomy>
+            <sov:Taxonomy id="85" name="Architecture" percentOfOverall="3">
+              <sov:Subtaxonomy id="473" name="General" percentOfOverall="3" percentOfParentTaxonomy="75">
+                <sov:Skill existsInText="true" id="011739" lastUsed="2014-12-31" name="BLUEPRINTS" totalMonths="8" whereFound="Found in WORK HISTORY; POS-2"></sov:Skill>
+              </sov:Subtaxonomy>
+              <sov:Subtaxonomy id="477" name="Structural" percentOfOverall="1" percentOfParentTaxonomy="25">
+                <sov:Skill existsInText="true" id="011584" name="ACI" whereFound="Found in PROJECT_HEADERS; WORK HISTORY"></sov:Skill>
+              </sov:Subtaxonomy>
+            </sov:Taxonomy>
+            <sov:Taxonomy id="0" name="Common End-user Software" percentOfOverall="3">
+              <sov:Subtaxonomy id="108" name="Core Office" percentOfOverall="2" percentOfParentTaxonomy="71">
+                <sov:Skill existsInText="true" id="022841" name="EXCEL" whereFound="Found in SKILLS">
+                  <sov:ChildSkill existsInText="true" id="002864" name="MS EXCEL" whereFound="Found in SKILLS"></sov:ChildSkill>
+                </sov:Skill>
+                <sov:Skill existsInText="false" id="022961" name="MICROSOFT WORD">
+                  <sov:ChildSkill existsInText="true" id="003106" name="MS WORD" whereFound="Found in SKILLS"></sov:ChildSkill>
+                  <sov:ChildSkill existsInText="true" id="002379" name="WORD" whereFound="Found in SKILLS"></sov:ChildSkill>
+                </sov:Skill>
+              </sov:Subtaxonomy>
+              <sov:Subtaxonomy id="230" name="Planning and Analysis" percentOfOverall="1" percentOfParentTaxonomy="29">
+                <sov:Skill existsInText="false" id="024342" name="MICROSOFT PROJECT">
+                  <sov:ChildSkill existsInText="true" id="022951" name="MS PROJECT" whereFound="Found in SKILLS"></sov:ChildSkill>
+                </sov:Skill>
+              </sov:Subtaxonomy>
+            </sov:Taxonomy>
+            <sov:Taxonomy id="26" name="Power Engineering" percentOfOverall="1">
+              <sov:Subtaxonomy id="925" name="General Power Related" percentOfOverall="1" percentOfParentTaxonomy="100">
+                <sov:Skill existsInText="false" id="081104" name="SURETRAK">
+                  <sov:ChildSkill existsInText="true" id="005406" name="PRIMAVERA" whereFound="Found in SKILLS"></sov:ChildSkill>
+                </sov:Skill>
+              </sov:Subtaxonomy>
+            </sov:Taxonomy>
+          </sov:TaxonomyRoot>
+        </sov:SkillsTaxonomyOutput>
+      </sov:ExperienceSummary>
+      <sov:Sections>
+        <sov:Section ends="4" sectionType="OBJECTIVE" starts="3">OBJECTIVE:</sov:Section>
+        <sov:Section ends="9" sectionType="EDUCATION" starts="5">EDUCATION</sov:Section>
+        <sov:Section ends="12" sectionType="SKILLS" starts="10">COMPUTER SKILLS</sov:Section>
+        <sov:Section ends="29" sectionType="WORK HISTORY" starts="13">RELATED EXPERIENCE</sov:Section>
+        <sov:Section ends="40" sectionType="PROJECT_HEADERS" starts="30">ACADEMIC PROJECTS</sov:Section>
+      </sov:Sections>
+      <sov:ReservedData>
+        <sov:Phones>
+          <sov:Phone>Mobile: (347)-803-9767</sov:Phone>
+          <sov:Phone>(347)-803-9767</sov:Phone>
+        </sov:Phones>
+        <sov:Names>
+          <sov:Name>LAKSHMI CHARAN BOBBA</sov:Name>
+          <sov:Name>LAKSHMI CHARAN BOBBA,</sov:Name>
+        </sov:Names>
+        <sov:EmailAddresses>
+          <sov:EmailAddress>charanscivil@gmail.com</sov:EmailAddress>
+        </sov:EmailAddresses>
+        <sov:OtherData>
+          <sov:OtherDatum>219 Sailboat run</sov:OtherDatum>
+        </sov:OtherData>
+      </sov:ReservedData>
+      <sov:ParsedTextLength>3097</sov:ParsedTextLength>
+      <sov:ParseTime>875</sov:ParseTime>
+      <sov:ResumeQuality>
+        <sov:Assessments>
+          <sov:Assessment>
+            <sov:Level>Data Missing</sov:Level>
+            <sov:Findings>
+              <sov:Information>[Sovren:222;POS-3] No employer name was found for:  POS-3. Every position in a resume should have an employer name.</sov:Information>
+              <sov:Information>[Sovren:226;] We found no work history positions within the past year. A resume should include work history information, including time off, for the most recent year.</sov:Information>
+              <sov:Information>[Sovren:232;DEG-1] The following educational degree is not associated with a school: DEG-1. Every degree in a resume should be associated with a school.</sov:Information>
+            </sov:Findings>
+          </sov:Assessment>
+          <sov:Assessment>
+            <sov:Level>Suggested Improvements</sov:Level>
+            <sov:Findings>
+              <sov:Information>[Sovren:112;] The following section was identified as a skills section type: 'COMPUTER SKILLS'. Skills should not be in a separate section, but instead, each skill should be included in the descriptions of work history or education.</sov:Information>
+              <sov:Information>[Sovren:151;0] The following section does not have the header on a separate line: 'OBJECTIVE:'. Every section should have a clear, unambiguous, commonly-used header on a separate line directly above the content associated with it.</sov:Information>
+            </sov:Findings>
+          </sov:Assessment>
+        </sov:Assessments>
+      </sov:ResumeQuality>
+      <sov:LicenseSerialNumber>0164432d-55f8-474b-adaa-3b0a497f3374</sov:LicenseSerialNumber>
+      <sov:ParserConfigurationString>Coverage.FindSkillsInEntireDocument = True; Coverage.IgnoreCaseForSkills = True; Coverage.PersonalAttributes = True; Coverage.Training = True; Culture.CountryCodeForUnitedKingdomIsUK = True; Culture.DefaultCountryCode = US; Culture.Language = English; Culture.PreferEnglishVersionIfTwoLanguagesInDocument = False; Data.UserDefinedParsing = False; OutputFormat.AssumeCompanyNameFromPrecedingJob = False; OutputFormat.ContactMethod.PackStyle = Split; OutputFormat.DateOutputStyle = ExplicitlyKnownDateInfoOnly; OutputFormat.NestJobsBasedOnDateRanges = True; OutputFormat.NormalizeRegions = False; OutputFormat.SkillsStyle = Default; OutputFormat.StripParsedDataFromPositionHistoryDescription = True; OutputFormat.TelcomNumber.Style = Raw; OutputFormat.XmlFormat = HrXmlResume25; Runtime.EffectiveHardTimeout = 540000; Runtime.SoftTimeout = 360000</sov:ParserConfigurationString>
+      <sov:ParserVersion>9.3.3.0</sov:ParserVersion>
+      <sov:DigitalSignature></sov:DigitalSignature>
+    </sov:ResumeUserArea>
+  </UserArea>
+</Resume>
