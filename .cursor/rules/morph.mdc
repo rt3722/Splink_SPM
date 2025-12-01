@@ -1,0 +1,13 @@
+---
+description: Use Morph MCP for code edits and searches
+alwaysApply: true
+---
+
+### warp_grep
+
+Use `warp_grep` when you'd otherwise chain grep→read→grep→read->etc. It runs that whole investigation (15-30 ops) in one call and returns only the relevant line ranges, and results are more accurate.
+
+**Use grep for:** single known pattern → one grep → done
+**Use warp_grep for:** "how does X work?" / tracing flow across files / understanding unfamiliar code / understanding code with multiple dependencies
+
+If you already know the exact pattern and are looking for 1 thing, just grep it.
