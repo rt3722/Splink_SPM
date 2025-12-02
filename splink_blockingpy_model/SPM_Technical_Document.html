@@ -1,0 +1,2084 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPM Entity Resolution: Technical Overview</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --text-primary: #1a1a1a;
+            --text-secondary: #4a4a4a;
+            --text-muted: #6b6b6b;
+            --bg-primary: #fafafa;
+            --bg-secondary: #f0f0f0;
+            --accent: #2563eb;
+            --accent-light: #dbeafe;
+            --border: #e5e5e5;
+            --code-bg: #f5f5f5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Pro', Georgia, serif;
+            font-size: 18px;
+            line-height: 1.8;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        /* Typography */
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+
+        h2 {
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border);
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-top: 2rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        h4 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        p {
+            margin-bottom: 1.25rem;
+            text-align: justify;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .meta {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        /* Lists */
+        ul, ol {
+            margin-bottom: 1.25rem;
+            padding-left: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Math/Formula blocks */
+        .formula {
+            background: var(--code-bg);
+            border-left: 3px solid var(--accent);
+            padding: 1.25rem 1.5rem;
+            margin: 1.5rem 0;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.95rem;
+            overflow-x: auto;
+        }
+
+        .formula-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+            font-family: 'Crimson Pro', serif;
+            font-style: italic;
+        }
+
+        /* Code */
+        code {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.9rem;
+            background: var(--code-bg);
+            padding: 0.15rem 0.4rem;
+            border-radius: 3px;
+        }
+
+        pre {
+            background: var(--code-bg);
+            padding: 1.25rem;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        pre code {
+            background: none;
+            padding: 0;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+        }
+
+        th, td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        th {
+            background: var(--bg-secondary);
+            font-weight: 600;
+        }
+
+        tr:hover td {
+            background: var(--bg-secondary);
+        }
+
+        /* Callout boxes */
+        .callout {
+            background: var(--accent-light);
+            border-left: 4px solid var(--accent);
+            padding: 1rem 1.25rem;
+            margin: 1.5rem 0;
+        }
+
+        .callout-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Section numbering */
+        .section-num {
+            color: var(--accent);
+            margin-right: 0.5rem;
+        }
+
+        /* Page breaks for printing */
+        .page-break {
+            page-break-after: always;
+            margin: 3rem 0;
+            border-top: 1px solid var(--border);
+            padding-top: 2rem;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                font-size: 11pt;
+                padding: 0;
+            }
+            .page-break {
+                page-break-after: always;
+            }
+        }
+
+        /* Definition list style */
+        .def-list dt {
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+
+        .def-list dd {
+            margin-left: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-secondary);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Entity Resolution for Candidate Deduplication</h1>
+        <p class="subtitle">A Probabilistic Record Linkage Approach Using Splink and BlockingPy</p>
+        <p class="meta">
+            SPM Team • Allegis Group<br>
+            Technical Architecture Document • Version 2.0
+        </p>
+    </header>
+
+    <!-- TABLE OF CONTENTS -->
+    <nav style="background: var(--bg-secondary); padding: 1.5rem; margin-bottom: 2rem; border-radius: 4px;">
+        <h2 style="margin-top: 0; border-bottom: none; padding-bottom: 0;">Table of Contents</h2>
+        <ol style="column-count: 2; column-gap: 2rem;">
+            <li><a href="#section-1">Introduction and Problem Statement</a></li>
+            <li><a href="#section-2">Data Preparation Pipeline</a></li>
+            <li><a href="#section-3">Blocking: Candidate Pair Generation</a></li>
+            <li><a href="#section-4">Probabilistic Record Linkage</a></li>
+            <li><a href="#section-5">Clustering and Entity Resolution</a></li>
+            <li><a href="#section-6">Rationale for the Chosen Approach</a></li>
+            <li><a href="#section-7">System Architecture Overview</a></li>
+            <li><a href="#section-8">Implementation Details</a></li>
+            <li><a href="#section-9">Performance Metrics and Evaluation</a></li>
+            <li><a href="#section-10">Glossary of Terms</a></li>
+            <li><a href="#section-11">Frequently Asked Questions</a></li>
+            <li><a href="#section-12">Conclusion</a></li>
+            <li><a href="#appendix-a">Appendix A: References</a></li>
+            <li><a href="#appendix-b">Appendix B: Code Examples</a></li>
+        </ol>
+    </nav>
+
+    <!-- SECTION 1: Introduction -->
+    <section id="section-1">
+        <h2><span class="section-num">1.</span> Introduction and Problem Statement</h2>
+        
+        <p>
+            Entity resolution (also known as record linkage or deduplication) is the task of identifying records 
+            that refer to the same real-world entity across one or more datasets. In the context of candidate 
+            management, this means identifying when multiple records represent the same individual, even when 
+            those records contain variations, errors, or incomplete information.
+        </p>
+
+        <p>
+            The fundamental challenge arises from the absence of a universal unique identifier. Records for the 
+            same person may differ due to:
+        </p>
+
+        <ul>
+            <li><strong>Typographical errors:</strong> "John" vs "Jhon", "Smith" vs "Smtih"</li>
+            <li><strong>Phonetic variations:</strong> "Smith" vs "Smyth" (same pronunciation, different spelling)</li>
+            <li><strong>Missing data:</strong> Some records may lack phone numbers, emails, or other fields</li>
+            <li><strong>Format inconsistencies:</strong> Different date formats, address abbreviations, name orderings</li>
+            <li><strong>Data evolution:</strong> Job titles, employers, and contact information change over time</li>
+        </ul>
+
+        <p>
+            A naive approach of comparing every record pair has computational complexity O(n²). For a dataset of 
+            1 million records, this requires approximately 500 billion comparisons—computationally infeasible. 
+            Our approach combines <strong>blocking</strong> (to reduce comparisons) with <strong>probabilistic 
+            matching</strong> (to score candidate pairs), achieving both scalability and accuracy.
+        </p>
+
+        <h3>1.1 Pipeline Overview</h3>
+        <p>
+            The SPM entity resolution system is implemented in two main Python scripts:
+        </p>
+        <ul>
+            <li><strong><code>data_preparation.py</code></strong> — Handles data loading, cleaning, standardization, 
+                feature engineering, and output generation</li>
+            <li><strong><code>train_model.py</code></strong> — Applies BlockingPy blocking, configures Splink, 
+                trains the model, generates predictions, and clusters results</li>
+        </ul>
+
+        <p>
+            Input data is loaded from <code>spm_data_latest.tsv</code>, split into train (90%) and test (10%) sets, 
+            with the test set further divided into three batches (20%, 40%, 40%) for staged evaluation.
+        </p>
+    </section>
+
+    <!-- SECTION 2: Data Preparation -->
+    <section id="section-2">
+        <h2><span class="section-num">2.</span> Data Preparation Pipeline</h2>
+
+        <p>
+            The data preparation phase (<code>data_preparation.py</code>) transforms raw candidate records into a 
+            standardized format optimized for both blocking and probabilistic comparison. This involves cleaning, 
+            normalization, feature engineering, and the creation of derived fields that improve matching accuracy.
+        </p>
+
+        <h3>2.1 Field Standardization</h3>
+
+        <p>
+            Each field type requires domain-specific cleaning logic implemented as dedicated functions:
+        </p>
+
+        <h4>Name Fields</h4>
+        <p>
+            Names undergo Unicode normalization via <code>unidecode</code> (converting accented characters to ASCII equivalents), 
+            removal of non-alphabetic characters, and case normalization. The functions <code>clean_firstname()</code> and 
+            <code>clean_lastname()</code> handle FIRSTNAME and LASTNAME columns. For unstructured name fields 
+            (NAME_1, NAME_2, NAME_3) containing full names or additional text, we apply Named Entity Recognition (NER) using 
+            spaCy's <code>en_core_web_sm</code> model via <code>extract_names_from_text()</code> to extract PERSON entities.
+        </p>
+
+        <h4>Phonetic Encoding</h4>
+        <p>
+            To handle spelling variations of phonetically similar names, we generate phonetic encodings 
+            using the <code>jellyfish</code> library with two algorithms:
+        </p>
+
+        <dl class="def-list">
+            <dt>Soundex (<code>get_soundex()</code>)</dt>
+            <dd>
+                A phonetic algorithm that encodes names by sound. It retains the first letter and 
+                converts subsequent consonants to digits based on phonetic categories. For example, 
+                both "Smith" and "Smyth" encode to "S530", enabling blocking on similar-sounding names.
+            </dd>
+            <dt>Metaphone (<code>get_metaphone()</code>)</dt>
+            <dd>
+                A more sophisticated phonetic algorithm that better handles English pronunciation rules. 
+                It produces variable-length encodings that more accurately represent how names sound.
+            </dd>
+        </dl>
+
+        <h4>Phone Numbers</h4>
+        <p>
+            Phone numbers are parsed and validated using the <code>phonenumbers</code> library via 
+            <code>clean_phone_number()</code>, which handles international formats and validates number structure. 
+            Invalid placeholders (e.g., "0000000000", "1234567890", "9999999999") are filtered. Numbers shorter 
+            than 7 digits or longer than 15 digits are rejected. The function <code>clean_phone_columns()</code> 
+            processes all phone columns: PHONE, MOBILEPHONE, HOMEPHONE, OTHERPHONE, PHONE_1, PHONE_2, PHONE_3.
+        </p>
+
+        <h4>Email Addresses</h4>
+        <p>
+            Emails are normalized to lowercase and validated for basic structural correctness 
+            (presence of @ and .) via <code>build_email_array()</code>. It processes EMAIL, EMAIL_1, EMAIL_2, EMAIL_3 
+            columns. Invalid entries and HTTP URLs are filtered out.
+        </p>
+
+        <h4>LinkedIn URLs</h4>
+        <p>
+            The <code>clean_linkedin_url()</code> function validates LinkedIn profile URLs (must start with 
+            <code>https://linkedin.com/in/</code> or <code>https://www.linkedin.com/in/</code>), extracts the 
+            profile identifier, and returns only alphabetic characters for consistent matching.
+        </p>
+
+        <h4>Employer and Title Fields</h4>
+        <p>
+            <code>clean_employer_name()</code> removes common suffixes (Inc., LLC, Corp., Ltd., Company, Co.) and 
+            normalizes to lowercase. <code>clean_title()</code> performs similar normalization for job titles.
+            These process EMPLOYER_1-4 and TITLE_1_1 through TITLE_4_2 columns respectively.
+        </p>
+
+        <h4>Location Fields</h4>
+        <p>
+            <code>clean_country()</code> standardizes to ISO 2-letter format with explicit mappings (USA→US, CANADA→CA, 
+            UK→GB, UNITED KINGDOM→GB). <code>clean_region()</code> normalizes to uppercase, and 
+            <code>clean_municipality()</code> normalizes to lowercase. These process the COUNTRY_*_*, REGION_*_*, 
+            and MUNICIPALITY_*_* columns.
+        </p>
+
+        <h4>Education Fields</h4>
+        <p>
+            <code>clean_degree()</code> standardizes degree names to abbreviations (e.g., "Bachelor of Science"→"bs", 
+            "Master of Business Administration"→"mba", "Doctor of Philosophy"→"phd"). Processes DEGREE_1_1 through DEGREE_3_2.
+        </p>
+
+        <h3>2.2 Array Column Construction</h3>
+
+        <p>
+            Many entities have multiple values for a given attribute (multiple phone numbers, email addresses, 
+            or past employers). Rather than selecting a single value or creating separate columns for each, 
+            we aggregate these into array columns using dedicated builder functions. This enables set-intersection 
+            comparisons during matching—if any element overlaps between two records, it provides evidence of a match.
+        </p>
+
+        <p>
+            The following builder functions are implemented in <code>data_preparation.py</code>:
+        </p>
+
+        <ul>
+            <li><code>build_names_array()</code> — Combines NAME_1/2/3 (via spaCy NER), linkedin_cleaned, and firstname+lastname</li>
+            <li><code>clean_phone_columns()</code> → <code>phones_array</code> — All validated phone numbers</li>
+            <li><code>build_email_array()</code> → <code>emails_array</code> — All validated email addresses</li>
+            <li><code>build_employer_array()</code> → <code>employers_array</code> — EMPLOYER_1 through EMPLOYER_4</li>
+            <li><code>build_title_array()</code> → <code>titles_array</code> — TITLE_1_1 through TITLE_4_2</li>
+            <li><code>build_country_array()</code> → <code>countries_array</code> — All country codes</li>
+            <li><code>build_region_array()</code> → <code>regions_array</code> — All region/state codes</li>
+            <li><code>build_municipality_array()</code> → <code>municipalities_array</code> — All city names</li>
+            <li><code>build_degree_array()</code> → <code>degrees_array</code> — All standardized degrees</li>
+        </ul>
+
+        <h3>2.3 Text Blob Generation for Embedding-Based Blocking</h3>
+
+        <p>
+            For approximate nearest neighbor (ANN) blocking, the <code>build_text_blob()</code> function concatenates 
+            cleaned fields into a single text representation. This text blob includes names, contact information, 
+            employment history, location, education, and work experience metrics:
+        </p>
+
+        <pre><code># Example output from build_text_blob()
+"firstname: john; lastname: smith; names: john smith johnsmith; 
+linkedin: johnsmith; phones: 5551234567; emails: john.smith@email.com; 
+employers: acme corp google; titles: software engineer senior developer; 
+countries: US; regions: CA; municipalities: san francisco; 
+degrees: bs ms; experience_years: 5.2; avg_tenure_years: 2.5"</code></pre>
+
+        <p>
+            This text blob is converted to a dense vector embedding using <code>model2vec</code> (specifically the 
+            <code>potion-base-32M</code> model) for ANN search, enabling semantic similarity-based blocking that 
+            captures relationships between records even when no single field matches exactly.
+        </p>
+
+        <h3>2.4 Data Splitting and Output</h3>
+
+        <p>
+            The script uses configurable split ratios defined at the top of <code>data_preparation.py</code>:
+        </p>
+
+        <pre><code># Configuration constants
+TRAIN_RATIO = 0.90   # 90% for training
+TEST_RATIO = 0.10    # 10% for testing
+
+# Test batch split ratios  
+BATCH1_RATIO = 0.20  # 20% of test set
+BATCH2_RATIO = 0.40  # 40% of test set
+BATCH3_RATIO = 0.40  # 40% of test set</code></pre>
+
+        <p>
+            The <code>create_lookup_table()</code> function creates a mapping between the integer <code>unique_id</code> 
+            (required by Splink) and the original identifiers (RESUME_ID, FILTERED_TALENT_ID, BATCH_TYPE).
+        </p>
+
+        <p>Output files are saved to the <code>output/</code> directory:</p>
+        <ul>
+            <li><code>train_cleaned.parquet</code>, <code>test_cleaned.parquet</code> — Cleaned data with all derived columns</li>
+            <li><code>train_lookup.parquet</code>, <code>test_lookup.parquet</code> — ID mapping tables</li>
+            <li><code>test_batch1.parquet</code>, <code>test_batch2.parquet</code>, <code>test_batch3.parquet</code> — Test batches</li>
+        </ul>
+    </section>
+
+    <div class="page-break"></div>
+
+    <!-- SECTION 3: Blocking -->
+    <section id="section-3">
+        <h2><span class="section-num">3.</span> Blocking: Candidate Pair Generation</h2>
+
+        <p>
+            Blocking is a critical preprocessing step that reduces the number of record pairs to compare. 
+            Without blocking, comparing n records requires n(n-1)/2 comparisons. Effective blocking reduces 
+            this to a manageable number while maintaining high recall (ensuring true matches are not filtered out).
+            The blocking logic is implemented in <code>train_model.py</code>.
+        </p>
+
+        <h3>3.1 Traditional Deterministic Blocking</h3>
+
+        <p>
+            Deterministic blocking groups records that share exact values on specified attributes. For example, 
+            <code>block_on("firstname_cleaned", "lastname_cleaned")</code> only compares records where both first name and 
+            last name match exactly. This is computationally efficient but misses matches with any variation 
+            in the blocking keys.
+        </p>
+
+        <p>
+            The <code>get_blocking_rules()</code> function in <code>train_model.py</code> defines multiple blocking rules:
+        </p>
+
+        <ul>
+            <li><strong>Exact name blocking:</strong> <code>block_on("firstname_cleaned", "lastname_cleaned")</code></li>
+            <li><strong>Phonetic blocking:</strong> <code>block_on("firstname_soundex", "lastname_soundex")</code> — catches "Smith"/"Smyth"</li>
+            <li><strong>First name only:</strong> <code>block_on("firstname_cleaned")</code> — broader coverage</li>
+            <li><strong>Last name only:</strong> <code>block_on("lastname_cleaned")</code> — broader coverage</li>
+        </ul>
+
+        <h3>3.2 Approximate Nearest Neighbor (ANN) Blocking with BlockingPy</h3>
+
+        <p>
+            BlockingPy implements ANN-based blocking that finds similar records based on vector representations, 
+            overcoming the limitations of exact-match blocking. The <code>apply_blockingpy()</code> function 
+            handles this process:
+        </p>
+
+        <h4>Step 1: Text Vectorization with model2vec</h4>
+        <p>
+            The text blob for each record is converted to a dense vector embedding using <code>model2vec</code>. 
+            The configuration in <code>train_model.py</code>:
+        </p>
+
+        <pre><code># BlockingPy configuration from train_model.py
+BLOCKINGPY_ANN = 'hnsw'   # Algorithm: Hierarchical Navigable Small World
+BLOCKINGPY_K = 10         # Number of nearest neighbors to find
+
+BLOCKINGPY_CONTROL_TXT = {
+    "encoder": "embedding",
+    "embedding": {
+        "model": "potion-base-32M",  # model2vec model for semantic embeddings
+        "normalize": True,            # Normalize for cosine similarity
+        "max_length": 512,            # Max tokens per text
+        "emb_batch_size": 1024,       # Batch size for encoding
+    }
+}</code></pre>
+
+        <h4>Step 2: ANN Search using HNSW</h4>
+        <p>
+            We use the Hierarchical Navigable Small World (HNSW) algorithm for approximate nearest neighbor search. 
+            HNSW constructs a multi-layer graph where:
+        </p>
+
+        <ul>
+            <li>Each layer is a proximity graph connecting similar vectors</li>
+            <li>Higher layers contain fewer nodes with longer-range connections</li>
+            <li>Search begins at the top layer and navigates down, progressively refining results</li>
+        </ul>
+
+        <p>
+            HNSW achieves O(log n) query complexity while maintaining high recall for nearest neighbor queries.
+
+        <h4>Step 3: Graph-Based Block Assignment</h4>
+        <p>
+            The ANN results (pairs of similar records) are used to construct an undirected graph where nodes 
+            are records and edges connect similar pairs. Connected components of this graph become blocks. 
+            This approach is transitive: if A is similar to B, and B is similar to C, then A, B, and C are 
+            all placed in the same block—even if A and C were not directly identified as neighbors.
+        </p>
+
+        <div class="callout">
+            <div class="callout-title">Reduction Ratio</div>
+            <p>
+                The reduction ratio measures blocking effectiveness: RR = 1 - (pairs after blocking) / (total possible pairs). 
+                A reduction ratio of 0.999 means 99.9% of non-matching pairs are eliminated, reducing a 
+                500-billion comparison problem to 500 million comparisons.
+            </p>
+        </div>
+
+        <h3>3.3 Combined Blocking Strategy</h3>
+
+        <p>
+            Our implementation combines both approaches. The <code>get_blocking_rules()</code> function returns 
+            all blocking rules, and Splink takes the union of candidate pairs from all rules:
+        </p>
+
+        <pre><code># From train_model.py - get_blocking_rules()
+def get_blocking_rules():
+    return [
+        block_on("block"),                                    # BlockingPy ANN blocks
+        block_on("firstname_cleaned", "lastname_cleaned"),    # Exact name match
+        block_on("firstname_soundex", "lastname_soundex"),    # Phonetic blocking (Smith/Smyth)
+        block_on("firstname_cleaned"),                        # First name only
+        block_on("lastname_cleaned"),                         # Last name only
+    ]</code></pre>
+
+        <p>
+            The BlockingPy blocking is applied first via <code>apply_blockingpy()</code>, which adds a <code>block</code> 
+            column to the dataframe. This column is then used as one of the blocking rules in Splink. The hybrid 
+            approach achieves both high recall (ANN catches fuzzy matches) and guaranteed coverage of exact matches 
+            (deterministic rules).
+        </p>
+    </section>
+
+    <div class="page-break"></div>
+
+    <!-- SECTION 4: Probabilistic Matching -->
+    <section id="section-4">
+        <h2><span class="section-num">4.</span> Probabilistic Record Linkage: The Fellegi-Sunter Model</h2>
+
+        <p>
+            The Fellegi-Sunter model (1969) provides a mathematical framework for probabilistic record linkage. 
+            Rather than making binary match/non-match decisions based on rules, it computes the probability 
+            that two records refer to the same entity based on the evidence from multiple field comparisons.
+        </p>
+
+        <h3>4.1 Theoretical Foundation</h3>
+
+        <p>
+            Let (a, b) be a pair of records. We want to compute P(Match | comparisons), the probability 
+            that records a and b refer to the same entity given the observed comparison outcomes.
+        </p>
+
+        <p>
+            For each comparison (e.g., "first names match exactly"), we define two key probabilities:
+        </p>
+
+        <dl class="def-list">
+            <dt>m-probability (match probability)</dt>
+            <dd>
+                P(comparison outcome | Match) — the probability of observing this comparison result 
+                given that the records truly are a match. For example, if 95% of true matches have 
+                exactly matching first names, then m = 0.95 for the "exact first name match" level.
+            </dd>
+            <dt>u-probability (non-match probability)</dt>
+            <dd>
+                P(comparison outcome | Non-match) — the probability of observing this comparison result 
+                by coincidence among non-matching records. If 5% of non-matches happen to share the same 
+                first name, then u = 0.05.
+            </dd>
+        </dl>
+
+        <h3>4.2 Bayes Factors and Match Weights</h3>
+
+        <p>
+            The evidential value of each comparison is quantified by the <strong>Bayes Factor</strong>:
+        </p>
+
+        <div class="formula">
+            <div class="formula-label">Bayes Factor (Likelihood Ratio)</div>
+            BF = m / u = P(comparison | Match) / P(comparison | Non-match)
+        </div>
+
+        <p>
+            A Bayes Factor greater than 1 indicates evidence for a match; less than 1 indicates evidence 
+            against. The <strong>match weight</strong> is the log₂ of the Bayes Factor:
+        </p>
+
+        <div class="formula">
+            <div class="formula-label">Match Weight</div>
+            weight = log₂(m / u)
+        </div>
+
+        <p>
+            Using logarithms converts multiplication to addition, so the total evidence from multiple 
+            independent comparisons is simply the sum of individual weights.
+        </p>
+
+        <h3>4.3 Computing Match Probability</h3>
+
+        <p>
+            The overall match score combines the prior probability with the accumulated evidence. 
+            Let λ be the prior odds that two random records match (typically very small, e.g., 1 in 100,000):
+        </p>
+
+        <div class="formula">
+            <div class="formula-label">Posterior Odds</div>
+            posterior_odds = prior_odds × ∏(BFᵢ)
+            
+            where BFᵢ is the Bayes Factor for comparison i
+        </div>
+
+        <p>
+            Converting to probability:
+        </p>
+
+        <div class="formula">
+            <div class="formula-label">Match Probability</div>
+            P(Match | evidence) = posterior_odds / (1 + posterior_odds)
+        </div>
+
+        <h3>4.4 Comparison Functions</h3>
+
+        <p>
+            Each field comparison can have multiple levels representing different degrees of similarity. 
+            For example, a name comparison might have levels:
+        </p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Level</th>
+                    <th>Condition</th>
+                    <th>Typical m</th>
+                    <th>Typical u</th>
+                    <th>Weight</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Exact match</td>
+                    <td>0.90</td>
+                    <td>0.01</td>
+                    <td>+6.5</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Jaro-Winkler ≥ 0.92</td>
+                    <td>0.04</td>
+                    <td>0.005</td>
+                    <td>+3.0</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Jaro-Winkler ≥ 0.88</td>
+                    <td>0.03</td>
+                    <td>0.01</td>
+                    <td>+1.6</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>No match</td>
+                    <td>0.03</td>
+                    <td>0.975</td>
+                    <td>-5.0</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>
+            Our model uses the following comparison types, defined in <code>get_comparisons()</code> in <code>train_model.py</code>:
+        </p>
+
+        <pre><code># From train_model.py - get_comparisons()
+def get_comparisons():
+    return [
+        # NAME COMPARISONS - Fuzzy matching with Jaro-Winkler
+        cl.NameComparison("firstname_cleaned"),
+        cl.NameComparison("lastname_cleaned"),
+        
+        # PHONETIC COMPARISONS - Same soundex = similar sounding names
+        cl.ExactMatch("firstname_soundex"),
+        cl.ExactMatch("lastname_soundex"),
+        
+        # NAME ARRAY - All name variations
+        cl.ArrayIntersectAtSizes("names_array", [2, 1]),  # ≥2 or ≥1 matches
+        
+        # CONTACT COMPARISONS - Strong signals
+        cl.ArrayIntersectAtSizes("phones_array", [1]),    # ≥1 phone match
+        cl.ArrayIntersectAtSizes("emails_array", [1]),    # ≥1 email match
+        cl.ExactMatch("linkedin_cleaned"),
+        
+        # EMPLOYMENT COMPARISONS - Require ≥2 matches (stricter)
+        cl.ArrayIntersectAtSizes("employers_array", [2]),
+        cl.ArrayIntersectAtSizes("titles_array", [2]),
+        
+        # LOCATION COMPARISONS
+        cl.ArrayIntersectAtSizes("countries_array", [1]),
+        cl.ArrayIntersectAtSizes("regions_array", [1]),
+        cl.ArrayIntersectAtSizes("municipalities_array", [1]),
+        
+        # EDUCATION
+        cl.ArrayIntersectAtSizes("degrees_array", [2]),
+    ]</code></pre>
+
+        <h4>String Comparisons (Names)</h4>
+        <p>
+            <code>cl.NameComparison()</code> provides multi-level comparisons using Jaro-Winkler similarity, 
+            which is particularly effective for names. Jaro-Winkler gives higher scores to strings that match 
+            from the beginning, reflecting how name typos typically occur in the middle or end.
+        </p>
+
+        <h4>Phonetic Comparisons</h4>
+        <p>
+            <code>cl.ExactMatch()</code> on Soundex encodings. If two names have the same phonetic encoding, 
+            this provides additional evidence they represent the same person (even if spelled differently).
+        </p>
+
+        <h4>Array Intersection Comparisons</h4>
+        <p>
+            <code>cl.ArrayIntersectAtSizes()</code> counts overlapping elements in array columns. 
+            The size thresholds create comparison levels:
+        </p>
+
+        <ul>
+            <li><strong>Contact fields (phones, emails):</strong> <code>[1]</code> — ≥1 match is significant</li>
+            <li><strong>Names array:</strong> <code>[2, 1]</code> — Level 1: ≥2 matches (strong), Level 2: ≥1 match (weaker)</li>
+            <li><strong>Employment/Education:</strong> <code>[2]</code> — Require ≥2 matches (more strict to avoid false positives)</li>
+        </ul>
+
+        <div class="callout">
+            <div class="callout-title">Note on Numeric Comparisons</div>
+            <p>
+                Numeric comparisons (months_experience, avg_months_per_employer) are not directly supported in 
+                Splink's comparison_library. However, these fields are included in the text blob for BlockingPy 
+                and are used in deterministic rules for estimating the prior match probability.
+            </p>
+        </div>
+
+        <h3>4.5 Parameter Estimation via Expectation-Maximization</h3>
+
+        <p>
+            The m and u probabilities are estimated from the data using the Expectation-Maximization (EM) 
+            algorithm. The <code>train_model()</code> function in <code>train_model.py</code> implements this 
+            in three steps:
+        </p>
+
+        <pre><code># From train_model.py - train_model()
+def train_model(linker):
+    # Step 1: Estimate u probabilities from random sampling
+    linker.training.estimate_u_using_random_sampling(max_pairs=1e8, seed=RANDOM_SEED)
+    
+    # Step 2: Estimate probability two random records match
+    linker.training.estimate_probability_two_random_records_match(
+        deterministic_matching_rules=get_deterministic_rules(),
+        recall=0.6
+    )
+    
+    # Step 3: Estimate m probabilities using EM (round-robin on different blocking rules)
+    linker.training.estimate_parameters_using_expectation_maximisation(
+        block_on("firstname_cleaned"), estimate_without_term_frequencies=True)
+    linker.training.estimate_parameters_using_expectation_maximisation(
+        block_on("lastname_cleaned"), estimate_without_term_frequencies=True)
+    linker.training.estimate_parameters_using_expectation_maximisation(
+        block_on("firstname_soundex", "lastname_soundex"), estimate_without_term_frequencies=True)</code></pre>
+
+        <p>
+            The EM algorithm iteratively:
+        </p>
+
+        <ol>
+            <li><strong>E-step:</strong> Estimate the probability each record pair is a match, given current m/u parameters</li>
+            <li><strong>M-step:</strong> Re-estimate m/u parameters by treating the E-step probabilities as soft labels</li>
+        </ol>
+
+        <p>
+            This unsupervised approach requires no labeled training data—the algorithm discovers the latent 
+            match/non-match structure from the comparison patterns themselves. Training on multiple different 
+            blocking rules (round-robin) avoids bias from any single blocking rule.
+        </p>
+
+        <h4>Deterministic Rules for Prior Estimation</h4>
+        <p>
+            The <code>get_deterministic_rules()</code> function defines high-precision rules used to estimate 
+            the prior probability that two random records match:
+        </p>
+
+        <pre><code># From train_model.py - get_deterministic_rules()
+def get_deterministic_rules():
+    return [
+        block_on("firstname_cleaned", "lastname_cleaned"),  # Exact name match
+        "array_length(list_intersect(l.phones_array, r.phones_array)) >= 1",  # Shared phone
+        "array_length(list_intersect(l.emails_array, r.emails_array)) >= 1",  # Shared email
+        # Compound rule: LinkedIn + experience + employer + title
+        """l.linkedin_cleaned = r.linkedin_cleaned AND l.linkedin_cleaned IS NOT NULL
+           AND ABS(COALESCE(l.months_experience, 0) - COALESCE(r.months_experience, 0)) <= 1
+           AND array_length(list_intersect(l.employers_array, r.employers_array)) >= 1
+           AND array_length(list_intersect(l.titles_array, r.titles_array)) >= 1""",
+    ]</code></pre>
+    </section>
+
+    <div class="page-break"></div>
+
+    <!-- SECTION 5: Clustering and Output -->
+    <section id="section-5">
+        <h2><span class="section-num">5.</span> Clustering and Entity Resolution</h2>
+
+        <p>
+            The probabilistic matcher outputs pairwise predictions: for each candidate pair that passes 
+            blocking, it computes a match probability. The <code>generate_predictions()</code> and 
+            <code>cluster_predictions()</code> functions in <code>train_model.py</code> handle this process.
+        </p>
+
+        <h3>5.1 From Pairwise to Clusters</h3>
+
+        <p>
+            Pairwise predictions must be resolved into clusters representing distinct entities. If A matches B 
+            and B matches C, then A, B, and C should all be in the same cluster—even if A and C were never 
+            directly compared (due to blocking).
+        </p>
+
+        <pre><code># From train_model.py - Configuration
+MATCH_PROBABILITY_THRESHOLD = 0.9   # Minimum probability to consider a match
+CLUSTER_THRESHOLD = 0.95            # Threshold for clustering predictions
+
+# Generate predictions
+df_predictions = linker.inference.predict(threshold_match_probability=0.9)
+
+# Cluster predictions using connected components
+df_clusters = linker.clustering.cluster_pairwise_predictions_at_threshold(
+    df_predictions,
+    threshold_match_probability=0.95
+)</code></pre>
+
+        <p>
+            This is achieved through connected component analysis on the graph of predicted matches. 
+            Each connected component becomes a cluster representing a single entity.
+        </p>
+
+        <h3>5.2 Threshold Selection</h3>
+
+        <p>
+            Two thresholds control the precision/recall tradeoff (configured in <code>train_model.py</code>):
+        </p>
+
+        <ul>
+            <li><strong>Prediction threshold (0.9):</strong> Minimum match probability to consider a pair a match</li>
+            <li><strong>Clustering threshold (0.95):</strong> Higher threshold for more conservative clustering</li>
+        </ul>
+
+        <p>
+            Higher thresholds increase precision (fewer false positives) but reduce recall (more missed matches). 
+            The optimal threshold depends on the downstream application's tolerance for false positives versus 
+            false negatives.
+        </p>
+
+        <h3>5.3 Output Files</h3>
+
+        <p>
+            The <code>save_outputs()</code> function saves all results to the <code>model_output/</code> directory:
+        </p>
+
+        <ul>
+            <li><code>predictions_[timestamp].parquet</code> — All pairwise match predictions with probabilities</li>
+            <li><code>clusters_[timestamp].parquet</code> — Record-to-cluster assignments (cluster_id column)</li>
+            <li><code>model_[timestamp].json</code> — Trained model settings (can be reloaded for inference)</li>
+            <li><code>match_weights_[timestamp].html</code> — Interactive chart showing comparison weights</li>
+            <li><code>m_u_parameters_[timestamp].html</code> — Visualization of estimated m/u probabilities</li>
+            <li><code>comparison_dashboard_[timestamp].html</code> — Interactive dashboard for reviewing matches</li>
+        </ul>
+    </section>
+
+    <!-- SECTION 6: Why This Approach -->
+    <section id="section-6">
+        <h2><span class="section-num">6.</span> Rationale for the Chosen Approach</h2>
+
+        <h3>6.1 Why Probabilistic Matching (Splink)?</h3>
+
+        <p>
+            Deterministic rule-based matching (if field X matches AND field Y matches, then it's a match) 
+            is brittle—any variation breaks the rule. Probabilistic matching:
+        </p>
+
+        <ul>
+            <li><strong>Handles partial evidence:</strong> A match on phone number alone provides some evidence; 
+                combined with similar names and employers, the cumulative evidence may be conclusive</li>
+            <li><strong>Quantifies uncertainty:</strong> A 95% match probability vs. 60% enables different 
+                downstream handling</li>
+            <li><strong>Learns from data:</strong> The EM algorithm discovers how informative each comparison 
+                is in your specific dataset</li>
+            <li><strong>Scales:</strong> Splink leverages SQL backends (DuckDB, Spark) for efficient 
+                large-scale processing</li>
+        </ul>
+
+        <h3>6.2 Why ANN-Based Blocking (BlockingPy)?</h3>
+
+        <p>
+            Traditional blocking requires exact matches on blocking keys, missing records with any variation:
+        </p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Scenario</th>
+                    <th>Deterministic Blocking</th>
+                    <th>ANN Blocking</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>"John Smith" vs "Jon Smith"</td>
+                    <td>Missed (different first names)</td>
+                    <td>Found (high text similarity)</td>
+                </tr>
+                <tr>
+                    <td>"Robert" vs "Bob" (same person)</td>
+                    <td>Missed</td>
+                    <td>May be found via other similar fields</td>
+                </tr>
+                <tr>
+                    <td>Missing last name in one record</td>
+                    <td>Missed</td>
+                    <td>Found via overall similarity</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>
+            By combining ANN blocking with phonetic blocking and exact-match blocking, we achieve comprehensive 
+            coverage:
+        </p>
+
+        <ul>
+            <li>ANN catches fuzzy matches with any text similarity</li>
+            <li>Phonetic blocking catches sound-alike name variations</li>
+            <li>Exact blocking guarantees coverage of identical records</li>
+        </ul>
+
+        <h3>6.3 Production Readiness</h3>
+
+        <p>
+            Both libraries are production-tested:
+        </p>
+
+        <ul>
+            <li><strong>Splink:</strong> Developed by the UK Ministry of Justice, used across government 
+                departments for large-scale record linkage</li>
+            <li><strong>BlockingPy:</strong> Developed by Poznań University of Economics and Statistics Poland, 
+                used for official population statistics including tracking migration flows</li>
+        </ul>
+    </section>
+
+    <!-- SECTION 7: Architecture Overview -->
+    <section id="section-7">
+        <h2><span class="section-num">7.</span> System Architecture Overview</h2>
+
+        <p>
+            The complete entity resolution pipeline consists of two main stages executed sequentially:
+        </p>
+
+        <h3>7.1 Pipeline Flow</h3>
+
+        <pre><code>┌─────────────────────────────────────────────────────────────────────────────┐
+│                        DATA PREPARATION STAGE                                │
+│  (data_preparation.py)                                                       │
+├─────────────────────────────────────────────────────────────────────────────┤
+│  1. Load raw candidate data (TSV format)                                    │
+│  2. Create lookup table with unique_id mapping                              │
+│  3. Split into train (90%) and test (10%) sets                              │
+│  4. Clean and standardize all fields:                                       │
+│     - Names: Unicode normalization, NER extraction, phonetic encoding       │
+│     - Phones: Validation, standardization to digits-only                    │
+│     - Emails: Lowercase normalization, validation                           │
+│     - Employers/Titles: Suffix removal, case normalization                  │
+│     - Locations: Country code standardization (ISO 2-letter)                │
+│  5. Build array columns for multi-valued attributes                         │
+│  6. Generate text blob for BlockingPy embeddings                            │
+│  7. Save cleaned data as Parquet files                                      │
+└─────────────────────────────────────────────────────────────────────────────┘
+                                    │
+                                    ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                        MODEL TRAINING STAGE                                  │
+│  (train_model.py)                                                            │
+├─────────────────────────────────────────────────────────────────────────────┤
+│  1. Load cleaned training data                                              │
+│  2. Apply BlockingPy ANN blocking:                                          │
+│     - Convert text_blob to embeddings (model2vec)                           │
+│     - Run HNSW nearest neighbor search                                      │
+│     - Assign block IDs via connected components                             │
+│  3. Create Splink Linker with settings:                                     │
+│     - Define blocking rules (ANN + deterministic)                           │
+│     - Define comparison functions                                           │
+│  4. Train model:                                                            │
+│     - Estimate u-probabilities (random sampling)                            │
+│     - Estimate prior match probability (deterministic rules)                │
+│     - Estimate m-probabilities (EM algorithm, round-robin)                  │
+│  5. Generate predictions (threshold = 0.9)                                  │
+│  6. Cluster predictions (threshold = 0.95)                                  │
+│  7. Save outputs: predictions, clusters, model JSON, visualizations         │
+└─────────────────────────────────────────────────────────────────────────────┘</code></pre>
+
+        <h3>7.2 Key Design Decisions</h3>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Decision</th>
+                    <th>Choice</th>
+                    <th>Rationale</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Blocking Strategy</td>
+                    <td>Hybrid (ANN + Deterministic)</td>
+                    <td>Maximizes recall: ANN catches fuzzy matches, deterministic guarantees exact matches</td>
+                </tr>
+                <tr>
+                    <td>ANN Algorithm</td>
+                    <td>HNSW</td>
+                    <td>Best balance of speed (O(log n)) and recall for high-dimensional vectors</td>
+                </tr>
+                <tr>
+                    <td>Text Encoding</td>
+                    <td>model2vec embeddings</td>
+                    <td>Semantic similarity captures meaning, not just character overlap</td>
+                </tr>
+                <tr>
+                    <td>SQL Backend</td>
+                    <td>DuckDB</td>
+                    <td>High performance, no server required, full feature support</td>
+                </tr>
+                <tr>
+                    <td>Training Approach</td>
+                    <td>Unsupervised EM</td>
+                    <td>No labeled data required; discovers match structure from comparison patterns</td>
+                </tr>
+                <tr>
+                    <td>Multi-valued Fields</td>
+                    <td>Array columns</td>
+                    <td>Set intersection enables matching on any overlapping value</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>7.3 Output Artifacts</h3>
+
+        <p>
+            The pipeline produces the following outputs in the <code>model_output/</code> directory:
+        </p>
+
+        <ul>
+            <li><strong>predictions_[timestamp].parquet:</strong> All pairwise match predictions with probabilities</li>
+            <li><strong>clusters_[timestamp].parquet:</strong> Record-to-cluster assignments</li>
+            <li><strong>model_[timestamp].json:</strong> Trained model settings (can be reloaded for inference)</li>
+            <li><strong>match_weights_[timestamp].html:</strong> Interactive chart showing comparison weights</li>
+            <li><strong>m_u_parameters_[timestamp].html:</strong> Visualization of estimated m/u probabilities</li>
+            <li><strong>comparison_dashboard_[timestamp].html:</strong> Interactive dashboard for reviewing matches</li>
+        </ul>
+    </section>
+
+    <div class="page-break"></div>
+
+    <!-- SECTION 8: Implementation Details -->
+    <section id="section-8">
+        <h2><span class="section-num">8.</span> Implementation Details</h2>
+
+        <p>
+            This section provides deeper technical details on the specific implementation choices made 
+            in our SPM entity resolution pipeline, including the libraries used, data structures, and 
+            configuration parameters.
+        </p>
+
+        <h3>8.1 Technology Stack</h3>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Component</th>
+                    <th>Library</th>
+                    <th>Purpose</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Probabilistic Matching</td>
+                    <td>Splink 4.x</td>
+                    <td>Fellegi-Sunter model implementation, EM training, predictions</td>
+                </tr>
+                <tr>
+                    <td>ANN Blocking</td>
+                    <td>BlockingPy</td>
+                    <td>HNSW-based approximate nearest neighbor blocking</td>
+                </tr>
+                <tr>
+                    <td>SQL Backend</td>
+                    <td>DuckDB</td>
+                    <td>High-performance analytical SQL engine</td>
+                </tr>
+                <tr>
+                    <td>Text Embeddings</td>
+                    <td>model2vec (potion-base-32M)</td>
+                    <td>Dense vector representations for semantic similarity</td>
+                </tr>
+                <tr>
+                    <td>NER</td>
+                    <td>spaCy (en_core_web_sm)</td>
+                    <td>Named Entity Recognition for name extraction</td>
+                </tr>
+                <tr>
+                    <td>Phonetic Encoding</td>
+                    <td>jellyfish</td>
+                    <td>Soundex and Metaphone algorithms</td>
+                </tr>
+                <tr>
+                    <td>Phone Validation</td>
+                    <td>phonenumbers</td>
+                    <td>International phone number parsing and validation</td>
+                </tr>
+                <tr>
+                    <td>Unicode Normalization</td>
+                    <td>unidecode</td>
+                    <td>Convert accented characters to ASCII equivalents</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>8.2 Data Schema</h3>
+
+        <p>
+            The cleaned data schema produced by the data preparation pipeline contains the following columns:
+        </p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Column</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>unique_id</code></td>
+                    <td>Integer</td>
+                    <td>Unique identifier required by Splink</td>
+                </tr>
+                <tr>
+                    <td><code>firstname_cleaned</code></td>
+                    <td>String</td>
+                    <td>Normalized first name (lowercase, alpha only)</td>
+                </tr>
+                <tr>
+                    <td><code>lastname_cleaned</code></td>
+                    <td>String</td>
+                    <td>Normalized last name (lowercase, alpha only)</td>
+                </tr>
+                <tr>
+                    <td><code>firstname_soundex</code></td>
+                    <td>String</td>
+                    <td>Soundex phonetic encoding of first name</td>
+                </tr>
+                <tr>
+                    <td><code>lastname_soundex</code></td>
+                    <td>String</td>
+                    <td>Soundex phonetic encoding of last name</td>
+                </tr>
+                <tr>
+                    <td><code>names_array</code></td>
+                    <td>Array[String]</td>
+                    <td>All name variations from multiple sources</td>
+                </tr>
+                <tr>
+                    <td><code>phones_array</code></td>
+                    <td>Array[String]</td>
+                    <td>Validated phone numbers (digits only)</td>
+                </tr>
+                <tr>
+                    <td><code>emails_array</code></td>
+                    <td>Array[String]</td>
+                    <td>Normalized email addresses</td>
+                </tr>
+                <tr>
+                    <td><code>employers_array</code></td>
+                    <td>Array[String]</td>
+                    <td>Standardized employer names</td>
+                </tr>
+                <tr>
+                    <td><code>titles_array</code></td>
+                    <td>Array[String]</td>
+                    <td>Standardized job titles</td>
+                </tr>
+                <tr>
+                    <td><code>months_experience</code></td>
+                    <td>Float</td>
+                    <td>Total months of work experience</td>
+                </tr>
+                <tr>
+                    <td><code>text_blob</code></td>
+                    <td>String</td>
+                    <td>Concatenated text for BlockingPy embeddings</td>
+                </tr>
+                <tr>
+                    <td><code>block</code></td>
+                    <td>Integer</td>
+                    <td>Block assignment from BlockingPy ANN search</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>8.3 Model Configuration Parameters</h3>
+
+        <h4>BlockingPy Configuration</h4>
+        <pre><code>BLOCKINGPY_ANN = 'hnsw'           # Algorithm: Hierarchical Navigable Small World
+BLOCKINGPY_K = 10                  # Number of nearest neighbors to find
+
+BLOCKINGPY_CONTROL_TXT = {
+    "encoder": "embedding",        # Use dense vector embeddings
+    "embedding": {
+        "model": "potion-base-32M", # model2vec model for semantic embeddings
+        "normalize": True,          # Normalize for cosine similarity
+        "max_length": 512,          # Maximum tokens per text
+        "emb_batch_size": 1024,     # Batch size for encoding
+    }
+}</code></pre>
+
+        <h4>Splink Configuration</h4>
+        <pre><code>MATCH_PROBABILITY_THRESHOLD = 0.9   # Minimum probability to consider a match
+CLUSTER_THRESHOLD = 0.95            # Threshold for clustering predictions
+
+# Blocking Rules (union of all rules generates candidate pairs)
+blocking_rules = [
+    block_on("block"),                              # ANN-based blocks
+    block_on("firstname_cleaned", "lastname_cleaned"),  # Exact name
+    block_on("firstname_soundex", "lastname_soundex"),  # Phonetic
+    block_on("firstname_cleaned"),                  # First name only
+    block_on("lastname_cleaned"),                   # Last name only
+]</code></pre>
+
+        <h3>8.4 Training Pipeline</h3>
+
+        <p>
+            The model training follows a specific sequence to ensure accurate parameter estimation:
+        </p>
+
+        <ol>
+            <li><strong>Estimate u-probabilities:</strong> Random sampling of record pairs (almost all non-matches) 
+                to estimate the probability of coincidental agreement for each comparison level.</li>
+            <li><strong>Estimate prior probability:</strong> Use high-precision deterministic rules to estimate 
+                the probability that two random records match (typically very small, e.g., 1 in 100,000).</li>
+            <li><strong>Estimate m-probabilities:</strong> Multiple rounds of EM algorithm on different blocking 
+                rules to estimate the probability of each comparison outcome given a true match.</li>
+        </ol>
+
+        <div class="callout">
+            <div class="callout-title">Training Best Practice</div>
+            <p>
+                The EM algorithm is run on multiple different blocking rules (round-robin training) to avoid 
+                bias from any single blocking rule. Each training pass uses different columns, ensuring that 
+                all comparison parameters are estimated from representative samples.
+            </p>
+        </div>
+    </section>
+
+    <div class="page-break"></div>
+
+    <!-- SECTION 9: Performance Metrics -->
+    <section id="section-9">
+        <h2><span class="section-num">9.</span> Performance Metrics and Evaluation</h2>
+
+        <p>
+            Evaluating an entity resolution system requires measuring both its effectiveness (accuracy) and 
+            efficiency (computational cost). This section defines the key metrics used to assess our pipeline.
+        </p>
+
+        <h3>9.1 Blocking Metrics</h3>
+
+        <h4>Reduction Ratio (RR)</h4>
+        <div class="formula">
+            <div class="formula-label">Reduction Ratio</div>
+            RR = 1 - (candidate pairs after blocking) / (total possible pairs)
+            
+            where total possible pairs = n(n-1)/2 for n records
+        </div>
+
+        <p>
+            A reduction ratio of 0.999 means 99.9% of non-matching pairs are eliminated. For 1 million records, 
+            this reduces ~500 billion comparisons to ~500 million—a 1000x reduction.
+        </p>
+
+        <h4>Pairs Completeness (Recall)</h4>
+        <div class="formula">
+            <div class="formula-label">Pairs Completeness</div>
+            PC = (true matching pairs in candidate set) / (total true matching pairs)
+        </div>
+
+        <p>
+            Measures what fraction of true matches survive blocking. High pairs completeness (>0.95) is critical—
+            pairs eliminated by blocking can never be recovered by the matcher.
+        </p>
+
+        <h3>9.2 Matching Metrics</h3>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Metric</th>
+                    <th>Formula</th>
+                    <th>Interpretation</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Precision</strong></td>
+                    <td>TP / (TP + FP)</td>
+                    <td>Of predicted matches, what fraction are correct?</td>
+                </tr>
+                <tr>
+                    <td><strong>Recall</strong></td>
+                    <td>TP / (TP + FN)</td>
+                    <td>Of true matches, what fraction did we find?</td>
+                </tr>
+                <tr>
+                    <td><strong>F1 Score</strong></td>
+                    <td>2 × (P × R) / (P + R)</td>
+                    <td>Harmonic mean of precision and recall</td>
+                </tr>
+                <tr>
+                    <td><strong>Accuracy</strong></td>
+                    <td>(TP + TN) / Total</td>
+                    <td>Overall correctness (less useful due to class imbalance)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>
+            Where: TP = True Positives (correct matches), FP = False Positives (incorrect matches), 
+            FN = False Negatives (missed matches), TN = True Negatives (correct non-matches).
+        </p>
+
+        <h3>9.3 Clustering Metrics</h3>
+
+        <h4>Deduplication Rate</h4>
+        <div class="formula">
+            <div class="formula-label">Deduplication Rate</div>
+            Dedup Rate = 1 - (number of clusters) / (number of records)
+        </div>
+
+        <p>
+            Measures the overall reduction in records. A deduplication rate of 0.15 means 15% of records 
+            were identified as duplicates.
+        </p>
+
+        <h4>Cluster Size Distribution</h4>
+        <p>
+            The distribution of cluster sizes provides insight into data quality:
+        </p>
+        <ul>
+            <li><strong>Many size-1 clusters:</strong> Most records are unique (expected for clean data)</li>
+            <li><strong>Size-2 clusters:</strong> Simple duplicates (common)</li>
+            <li><strong>Large clusters (>10):</strong> May indicate data quality issues or highly active candidates</li>
+        </ul>
+
+        <h3>9.4 Computational Performance</h3>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Stage</th>
+                    <th>Complexity</th>
+                    <th>Typical Time (1M records)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Data Preparation</td>
+                    <td>O(n)</td>
+                    <td>~30 minutes</td>
+                </tr>
+                <tr>
+                    <td>BlockingPy (HNSW)</td>
+                    <td>O(n log n)</td>
+                    <td>~10 minutes</td>
+                </tr>
+                <tr>
+                    <td>Splink Training</td>
+                    <td>O(candidate pairs)</td>
+                    <td>~20 minutes</td>
+                </tr>
+                <tr>
+                    <td>Prediction</td>
+                    <td>O(candidate pairs)</td>
+                    <td>~15 minutes</td>
+                </tr>
+                <tr>
+                    <td>Clustering</td>
+                    <td>O(V + E)</td>
+                    <td>~5 minutes</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <div class="page-break"></div>
+
+    <!-- SECTION 10: Glossary -->
+    <section id="section-10">
+        <h2><span class="section-num">10.</span> Glossary of Terms</h2>
+
+        <dl class="def-list">
+            <dt>ANN (Approximate Nearest Neighbor)</dt>
+            <dd>
+                An algorithm that finds vectors similar to a query vector without exhaustively comparing 
+                all vectors. Trades perfect accuracy for dramatic speed improvements. Used in BlockingPy 
+                to find similar records based on text embeddings.
+            </dd>
+
+            <dt>Bayes Factor</dt>
+            <dd>
+                The ratio of the probability of observing evidence under the match hypothesis versus the 
+                non-match hypothesis: BF = P(evidence|Match) / P(evidence|Non-match). A Bayes Factor > 1 
+                indicates evidence for a match; < 1 indicates evidence against.
+            </dd>
+
+            <dt>Blocking</dt>
+            <dd>
+                A preprocessing step that groups records into "blocks" and only compares records within 
+                the same block. Reduces O(n²) comparisons to a manageable number while maintaining high 
+                recall for true matches.
+            </dd>
+
+            <dt>Blocking Rule</dt>
+            <dd>
+                A condition that determines which records are placed in the same block. Example: 
+                <code>block_on("firstname", "lastname")</code> places records with identical first and 
+                last names in the same block.
+            </dd>
+
+            <dt>Candidate Pair</dt>
+            <dd>
+                A pair of records that passes blocking and will be compared by the probabilistic matcher. 
+                The goal of blocking is to generate candidate pairs that include all true matches while 
+                excluding most non-matches.
+            </dd>
+
+            <dt>Clustering</dt>
+            <dd>
+                The process of grouping pairwise match predictions into clusters representing distinct 
+                entities. Uses connected component analysis on the graph of predicted matches.
+            </dd>
+
+            <dt>Comparison</dt>
+            <dd>
+                A function that evaluates the similarity between two records on a specific attribute 
+                (e.g., first name, phone number). Each comparison produces a comparison level that 
+                contributes to the overall match score.
+            </dd>
+
+            <dt>Comparison Level</dt>
+            <dd>
+                A discrete outcome of a comparison function. For example, a name comparison might have 
+                levels: "exact match", "Jaro-Winkler ≥ 0.92", "Jaro-Winkler ≥ 0.88", "no match". Each 
+                level has associated m and u probabilities.
+            </dd>
+
+            <dt>Connected Component</dt>
+            <dd>
+                In graph theory, a maximal set of vertices where there exists a path between any two 
+                vertices. Used in clustering: if A matches B and B matches C, then A, B, and C form 
+                a connected component (same entity).
+            </dd>
+
+            <dt>Deduplication</dt>
+            <dd>
+                The process of identifying and removing duplicate records within a single dataset. 
+                Also called "dedupe_only" in Splink terminology.
+            </dd>
+
+            <dt>Deterministic Matching</dt>
+            <dd>
+                A matching approach that uses exact rules: if specific fields match exactly, records 
+                are considered a match. Simple but brittle—any variation breaks the rule.
+            </dd>
+
+            <dt>DuckDB</dt>
+            <dd>
+                An embedded analytical SQL database engine. Used as the SQL backend for Splink, providing 
+                high-performance query execution without requiring a separate database server.
+            </dd>
+
+            <dt>Embedding</dt>
+            <dd>
+                A dense vector representation of text or other data in a high-dimensional space. Similar 
+                items have similar embeddings (close in vector space). Used by BlockingPy for semantic 
+                similarity-based blocking.
+            </dd>
+
+            <dt>Entity Resolution</dt>
+            <dd>
+                The task of identifying records that refer to the same real-world entity across one or 
+                more datasets. Also known as record linkage, data matching, or deduplication.
+            </dd>
+
+            <dt>Expectation-Maximization (EM)</dt>
+            <dd>
+                An iterative algorithm for estimating parameters in models with latent (hidden) variables. 
+                In Splink, EM estimates m and u probabilities without requiring labeled training data by 
+                treating match/non-match status as a latent variable.
+            </dd>
+
+            <dt>Fellegi-Sunter Model</dt>
+            <dd>
+                A probabilistic framework for record linkage developed by Ivan Fellegi and Alan Sunter 
+                in 1969. Computes the probability that two records are a match based on comparison 
+                outcomes and their associated m and u probabilities.
+            </dd>
+
+            <dt>HNSW (Hierarchical Navigable Small World)</dt>
+            <dd>
+                A graph-based algorithm for approximate nearest neighbor search. Constructs a multi-layer 
+                graph where higher layers have fewer nodes with longer-range connections. Achieves O(log n) 
+                query complexity with high recall.
+            </dd>
+
+            <dt>Jaro-Winkler Similarity</dt>
+            <dd>
+                A string similarity metric that measures the edit distance between two strings, giving 
+                higher scores to strings that match from the beginning. Particularly effective for names 
+                where typos typically occur in the middle or end. Range: 0 (no similarity) to 1 (identical).
+            </dd>
+
+            <dt>m-probability</dt>
+            <dd>
+                The probability of observing a particular comparison outcome given that two records are 
+                a true match. Example: P(exact first name match | Match) = 0.95 means 95% of true matches 
+                have exactly matching first names.
+            </dd>
+
+            <dt>Match Probability</dt>
+            <dd>
+                The posterior probability that two records refer to the same entity, given all comparison 
+                outcomes. Computed from the prior probability and accumulated Bayes Factors. Range: 0 to 1.
+            </dd>
+
+            <dt>Match Weight</dt>
+            <dd>
+                The log₂ of the Bayes Factor for a comparison outcome. Positive weights indicate evidence 
+                for a match; negative weights indicate evidence against. The total match weight is the sum 
+                of individual weights across all comparisons.
+            </dd>
+
+            <dt>Metaphone</dt>
+            <dd>
+                A phonetic algorithm that encodes words based on their English pronunciation. More 
+                sophisticated than Soundex, producing variable-length codes that better capture how 
+                names sound. Example: "Smith" and "Smyth" produce the same code.
+            </dd>
+
+            <dt>model2vec</dt>
+            <dd>
+                A library for creating static word embeddings from transformer models. Used in our 
+                pipeline (potion-base-32M model) to generate dense vector representations of text 
+                for BlockingPy's ANN search.
+            </dd>
+
+            <dt>NER (Named Entity Recognition)</dt>
+            <dd>
+                A natural language processing task that identifies and classifies named entities in text 
+                (e.g., person names, organizations, locations). Used in our pipeline via spaCy to extract 
+                person names from unstructured text fields.
+            </dd>
+
+            <dt>Phonetic Encoding</dt>
+            <dd>
+                An algorithm that converts words to codes based on their pronunciation. Enables matching 
+                names that sound similar but are spelled differently (e.g., "Smith" and "Smyth"). Common 
+                algorithms include Soundex and Metaphone.
+            </dd>
+
+            <dt>Posterior Odds</dt>
+            <dd>
+                The odds of a match after observing evidence, computed as: posterior_odds = prior_odds × 
+                ∏(Bayes Factors). Converted to probability via: P = odds / (1 + odds).
+            </dd>
+
+            <dt>Prior Probability</dt>
+            <dd>
+                The probability that two randomly selected records are a match before observing any 
+                comparison evidence. Typically very small for large datasets (e.g., 1 in 100,000).
+            </dd>
+
+            <dt>Probabilistic Matching</dt>
+            <dd>
+                A matching approach that computes the probability that two records are a match based on 
+                multiple pieces of evidence. More robust than deterministic matching because it handles 
+                partial evidence and quantifies uncertainty.
+            </dd>
+
+            <dt>Record Linkage</dt>
+            <dd>
+                The process of identifying records that refer to the same entity across different datasets. 
+                Distinguished from deduplication (within a single dataset) though the techniques are similar.
+            </dd>
+
+            <dt>Reduction Ratio</dt>
+            <dd>
+                A metric measuring blocking effectiveness: RR = 1 - (pairs after blocking) / (total possible 
+                pairs). A reduction ratio of 0.999 means 99.9% of comparisons are eliminated by blocking.
+            </dd>
+
+            <dt>Soundex</dt>
+            <dd>
+                A phonetic algorithm that encodes names by sound. Retains the first letter and converts 
+                subsequent consonants to digits based on phonetic categories. Produces fixed 4-character 
+                codes. Example: "Smith" → "S530", "Smyth" → "S530".
+            </dd>
+
+            <dt>spaCy</dt>
+            <dd>
+                An open-source library for advanced Natural Language Processing in Python. Used in our 
+                pipeline for Named Entity Recognition to extract person names from unstructured text.
+            </dd>
+
+            <dt>Splink</dt>
+            <dd>
+                An open-source Python library for probabilistic record linkage developed by the UK Ministry 
+                of Justice. Implements the Fellegi-Sunter model with modern optimizations and supports 
+                multiple SQL backends.
+            </dd>
+
+            <dt>Term Frequency Adjustment</dt>
+            <dd>
+                A technique that adjusts match weights based on how common a value is. Common values 
+                (e.g., "John Smith") provide less evidence for a match than rare values (e.g., "Zebedee 
+                Xylophone") because coincidental matches are more likely.
+            </dd>
+
+            <dt>u-probability</dt>
+            <dd>
+                The probability of observing a particular comparison outcome given that two records are 
+                NOT a match (coincidental agreement). Example: P(exact first name match | Non-match) = 0.05 
+                means 5% of non-matches happen to share the same first name.
+            </dd>
+
+            <dt>Unicode Normalization</dt>
+            <dd>
+                The process of converting text to a standard form, particularly converting accented 
+                characters to their ASCII equivalents (e.g., "José" → "Jose"). Enables consistent 
+                comparison across records with different character encodings.
+            </dd>
+        </dl>
+    </section>
+
+    <div class="page-break"></div>
+
+    <!-- SECTION 11: FAQ -->
+    <section id="section-11">
+        <h2><span class="section-num">11.</span> Frequently Asked Questions</h2>
+
+        <h3>General Questions</h3>
+
+        <h4>Q: Why not just use exact matching rules?</h4>
+        <p>
+            Deterministic (exact) matching rules are brittle—any variation breaks the rule. If you require 
+            exact matches on first name, last name, and email, you'll miss records where "John" is spelled 
+            "Jon" or where someone changed their email address. Probabilistic matching accumulates evidence 
+            from multiple fields, so a strong match on phone number can compensate for a slight name variation.
+        </p>
+
+        <h4>Q: How accurate is the system?</h4>
+        <p>
+            Accuracy depends on data quality and threshold settings. With properly tuned thresholds, 
+            typical systems achieve 95%+ precision and 90%+ recall. The match probability threshold 
+            controls the precision/recall tradeoff: higher thresholds increase precision but reduce recall.
+        </p>
+
+        <h4>Q: Can the system handle millions of records?</h4>
+        <p>
+            Yes. The combination of blocking (which reduces O(n²) to manageable comparisons) and DuckDB's 
+            efficient SQL execution enables processing of datasets with millions of records. BlockingPy's 
+            HNSW algorithm has O(n log n) complexity, and Splink can leverage distributed backends like 
+            Apache Spark for even larger datasets.
+        </p>
+
+        <h4>Q: Does the system require labeled training data?</h4>
+        <p>
+            No. Splink uses the Expectation-Maximization algorithm to estimate parameters in an unsupervised 
+            manner. The algorithm discovers the latent match/non-match structure from comparison patterns. 
+            However, labeled data can be used for evaluation and threshold tuning if available.
+        </p>
+
+        <h3>Blocking Questions</h3>
+
+        <h4>Q: Why do we need both BlockingPy and traditional blocking rules?</h4>
+        <p>
+            Each approach has complementary strengths. Traditional deterministic blocking (e.g., exact name 
+            match) guarantees coverage of identical records and is computationally efficient. BlockingPy's 
+            ANN-based blocking catches fuzzy matches with typos, missing data, or variations that deterministic 
+            rules would miss. The union of both approaches achieves higher recall than either alone.
+        </p>
+
+        <h4>Q: What if blocking misses a true match?</h4>
+        <p>
+            Pairs eliminated by blocking can never be recovered—they're never compared by the probabilistic 
+            matcher. This is why we use multiple overlapping blocking rules and prioritize high recall in 
+            blocking. A reduction ratio of 0.999 with 99% pairs completeness is better than 0.9999 with 95% 
+            pairs completeness.
+        </p>
+
+        <h4>Q: How does HNSW work?</h4>
+        <p>
+            HNSW (Hierarchical Navigable Small World) builds a multi-layer graph where each layer is a 
+            proximity graph connecting similar vectors. Higher layers have fewer nodes with longer-range 
+            connections. Search starts at the top layer and navigates down, progressively refining results. 
+            This achieves O(log n) query complexity while maintaining high recall for nearest neighbors.
+        </p>
+
+        <h4>Q: What is the "text blob" used for?</h4>
+        <p>
+            The text blob is a concatenation of all relevant fields (names, contact info, employment history, 
+            etc.) into a single text string. This text is converted to a vector embedding by model2vec, 
+            enabling BlockingPy to find records with overall semantic similarity—even if no single field 
+            matches exactly.
+        </p>
+
+        <h3>Probabilistic Matching Questions</h3>
+
+        <h4>Q: What do the m and u probabilities represent?</h4>
+        <p>
+            <strong>m-probability:</strong> The probability of observing a comparison outcome (e.g., "exact 
+            first name match") given that two records ARE a true match. High m means this outcome is common 
+            among matches.<br>
+            <strong>u-probability:</strong> The probability of observing the same outcome given that two 
+            records are NOT a match (coincidental agreement). Low u means this outcome is rare among non-matches.<br>
+            The ratio m/u (Bayes Factor) determines the evidential value of each comparison outcome.
+        </p>
+
+        <h4>Q: Why use log weights instead of probabilities directly?</h4>
+        <p>
+            Using logarithms converts multiplication to addition. The overall evidence from multiple 
+            independent comparisons is the product of Bayes Factors, which becomes a sum of log weights. 
+            This is computationally more stable and makes it easier to interpret the contribution of each 
+            comparison to the final score.
+        </p>
+
+        <h4>Q: How is the match probability threshold chosen?</h4>
+        <p>
+            The threshold depends on the downstream application's tolerance for errors. A threshold of 0.9 
+            means we accept pairs with ≥90% match probability. Higher thresholds (e.g., 0.95) increase 
+            precision but reduce recall. For applications where false positives are costly (e.g., merging 
+            financial records), use higher thresholds. For applications where false negatives are costly 
+            (e.g., fraud detection), use lower thresholds.
+        </p>
+
+        <h4>Q: What is the Expectation-Maximization algorithm doing?</h4>
+        <p>
+            EM iteratively estimates parameters when some data is "hidden" (in our case, whether each pair 
+            is truly a match). The E-step estimates the probability each pair is a match given current 
+            parameters. The M-step re-estimates parameters treating these probabilities as soft labels. 
+            This continues until convergence, discovering the latent match/non-match structure without 
+            labeled data.
+        </p>
+
+        <h3>Data Preparation Questions</h3>
+
+        <h4>Q: Why use phonetic encoding (Soundex/Metaphone)?</h4>
+        <p>
+            Phonetic encoding captures how names sound rather than how they're spelled. "Smith" and "Smyth" 
+            have the same Soundex code (S530), enabling blocking and comparison of phonetically similar 
+            names. This is particularly valuable for names with common spelling variations or transliteration 
+            differences.
+        </p>
+
+        <h4>Q: Why aggregate multiple values into arrays?</h4>
+        <p>
+            Many entities have multiple values for attributes (multiple phone numbers, email addresses, 
+            past employers). Array columns enable set-intersection comparisons: if ANY element overlaps 
+            between two records, it provides evidence of a match. This is more robust than selecting a 
+            single "primary" value that might differ between records.
+        </p>
+
+        <h4>Q: How are invalid phone numbers handled?</h4>
+        <p>
+            Phone numbers are validated using the phonenumbers library, which checks structure and format. 
+            Invalid placeholders (e.g., "0000000000", "1234567890") are filtered out. Numbers that fail 
+            validation are converted to null, preventing false matches on invalid data.
+        </p>
+
+        <h4>Q: What happens to records with missing data?</h4>
+        <p>
+            Missing values are handled gracefully. In blocking, records with null values on blocking keys 
+            won't match on that rule but may match on other rules. In comparisons, Splink treats null 
+            comparisons as a separate level with its own m/u probabilities—missing data provides weak 
+            evidence against a match but doesn't preclude it.
+        </p>
+
+        <h3>Technical Questions</h3>
+
+        <h4>Q: Can I use vector embeddings in Splink blocking rules?</h4>
+        <p>
+            No, Splink blocking rules must be equality-based (equi-join conditions) for performance reasons. 
+            You cannot use <code>cosine_similarity(embedding_l, embedding_r) > 0.8</code> as a blocking rule. 
+            However, you CAN use BlockingPy to pre-compute similarity-based blocks, then use those blocks 
+            in Splink via <code>block_on("block")</code>.
+        </p>
+
+        <h4>Q: Does BlockingPy cause correlation issues in Splink?</h4>
+        <p>
+            No, because the "block" column is used for blocking (candidate pair generation), not as a 
+            comparison column. Splink's conditional independence assumption applies to comparison columns 
+            only. However, you should NOT use BlockingPy blocks for EM training—use simple deterministic 
+            rules instead to avoid training bias.
+        </p>
+
+        <h4>Q: Why use DuckDB instead of other backends?</h4>
+        <p>
+            DuckDB is an embedded analytical database that provides excellent performance for medium-scale 
+            datasets (up to ~10 million records) without requiring a separate database server. It supports 
+            all Splink features including array operations and cosine similarity. For larger datasets, 
+            Apache Spark can be used instead.
+        </p>
+
+        <h4>Q: How do I interpret the match weights chart?</h4>
+        <p>
+            The match weights chart shows the contribution of each comparison level to the overall match 
+            score. Positive weights (green bars) indicate evidence for a match; negative weights (red bars) 
+            indicate evidence against. The length of each bar shows the strength of evidence. Comparisons 
+            with high m/u ratios (e.g., exact phone match) have large positive weights.
+        </p>
+
+        <h3>Operational Questions</h3>
+
+        <h4>Q: How often should the model be retrained?</h4>
+        <p>
+            Retrain when data characteristics change significantly (new data sources, different field 
+            distributions, or observed degradation in match quality). For stable data sources, quarterly 
+            retraining is typically sufficient. Monitor precision/recall metrics to detect drift.
+        </p>
+
+        <h4>Q: Can the model be used for real-time matching?</h4>
+        <p>
+            Yes. Once trained, the model can be saved to JSON and loaded for inference. For real-time 
+            matching of new records against an existing dataset, you would: (1) apply the same data 
+            preparation, (2) find candidate pairs via blocking, (3) score pairs using the trained model. 
+            This typically takes milliseconds per record.
+        </p>
+
+        <h4>Q: How do I handle records that appear in multiple clusters?</h4>
+        <p>
+            By design, each record belongs to exactly one cluster (connected component). If you observe 
+            unexpected cluster merging (many records in one cluster), this may indicate: (1) threshold 
+            is too low, (2) a common value is causing false matches, or (3) data quality issues. Review 
+            the match weights for suspicious pairs to diagnose.
+        </p>
+
+        <h4>Q: What if I disagree with a match decision?</h4>
+        <p>
+            Splink provides visualization tools to understand why each decision was made. The waterfall 
+            chart shows exactly which comparisons contributed positive or negative evidence. If systematic 
+            errors are observed, you can adjust comparison thresholds, add term frequency adjustments for 
+            common values, or modify the match probability threshold.
+        </p>
+    </section>
+
+    <div class="page-break"></div>
+
+    <!-- SECTION 12: Conclusion -->
+    <section id="section-12">
+        <h2><span class="section-num">12.</span> Conclusion</h2>
+
+        <p>
+            The entity resolution pipeline presented in this document combines rigorous data preparation, 
+            hybrid blocking strategies, and probabilistic matching based on the Fellegi-Sunter model. This 
+            approach addresses the core challenges of candidate deduplication:
+        </p>
+
+        <ul>
+            <li><strong>Scalability:</strong> Blocking reduces O(n²) comparisons to a tractable number, 
+                enabling processing of datasets with millions of records</li>
+            <li><strong>Robustness:</strong> Probabilistic matching handles data variations, errors, and 
+                missing values by accumulating evidence from multiple sources</li>
+            <li><strong>Accuracy:</strong> Multiple evidence sources (names, contact info, employment history) 
+                combine to produce reliable match decisions with quantified uncertainty</li>
+            <li><strong>Interpretability:</strong> Match weights show exactly why each decision was made, 
+                enabling audit and refinement</li>
+            <li><strong>Flexibility:</strong> The hybrid blocking approach (ANN + deterministic) achieves 
+                high recall while maintaining computational efficiency</li>
+        </ul>
+
+        <p>
+            The combination of Splink's probabilistic framework with BlockingPy's ANN-based blocking provides 
+            the optimal balance of recall (catching all true duplicates) and precision (avoiding false merges), 
+            making it well-suited for production candidate management systems.
+        </p>
+
+        <h3>Key Takeaways</h3>
+
+        <ol>
+            <li><strong>Blocking is critical:</strong> Without effective blocking, entity resolution at scale 
+                is computationally infeasible. The hybrid approach of ANN + deterministic blocking maximizes 
+                recall while maintaining efficiency.</li>
+            <li><strong>Probabilistic beats deterministic:</strong> Real-world data is messy. Probabilistic 
+                matching handles partial evidence and quantifies uncertainty, producing more reliable results 
+                than rigid rule-based approaches.</li>
+            <li><strong>Data preparation matters:</strong> Standardization, phonetic encoding, and array 
+                aggregation significantly improve matching accuracy by enabling meaningful comparisons across 
+                records with different formats and representations.</li>
+            <li><strong>Thresholds control tradeoffs:</strong> The match probability threshold directly 
+                controls the precision/recall tradeoff. Choose based on the downstream application's 
+                tolerance for false positives versus false negatives.</li>
+            <li><strong>Interpretability enables trust:</strong> The ability to explain why each match 
+                decision was made (via match weights and waterfall charts) is essential for building 
+                confidence in the system and diagnosing issues.</li>
+        </ol>
+
+        <h3>Future Enhancements</h3>
+
+        <p>
+            Potential areas for future improvement include:
+        </p>
+
+        <ul>
+            <li><strong>Active learning:</strong> Incorporating human feedback on uncertain matches to 
+                improve model accuracy over time</li>
+            <li><strong>Deep learning embeddings:</strong> Using transformer-based models for richer 
+                semantic representations of candidate profiles</li>
+            <li><strong>Incremental updates:</strong> Efficiently updating clusters when new records 
+                arrive without full reprocessing</li>
+            <li><strong>Cross-lingual matching:</strong> Handling candidates with names in multiple 
+                languages or scripts</li>
+            <li><strong>Confidence calibration:</strong> Ensuring match probabilities are well-calibrated 
+                (a 90% probability should be correct 90% of the time)</li>
+        </ul>
+    </section>
+
+    <!-- APPENDIX A: References -->
+    <section id="appendix-a">
+        <h2>Appendix A: References</h2>
+
+        <ol>
+            <li>Fellegi, I. P., & Sunter, A. B. (1969). "A Theory for Record Linkage." 
+                <em>Journal of the American Statistical Association</em>, 64(328), 1183-1210.</li>
+            <li>Splink Documentation. UK Ministry of Justice. 
+                <a href="https://moj-analytical-services.github.io/splink/">https://moj-analytical-services.github.io/splink/</a></li>
+            <li>BlockingPy: Approximate Nearest Neighbours for Blocking of Records for Entity Resolution. 
+                Poznań University of Economics and Statistics Poland. 
+                <a href="https://arxiv.org/html/2504.04266v3">arXiv:2504.04266v3</a></li>
+            <li>Malkov, Y. A., & Yashunin, D. A. (2018). "Efficient and Robust Approximate Nearest Neighbor 
+                Search Using Hierarchical Navigable Small World Graphs." 
+                <em>IEEE Transactions on Pattern Analysis and Machine Intelligence</em>.</li>
+            <li>Jaro, M. A. (1989). "Advances in Record-Linkage Methodology as Applied to Matching the 
+                1985 Census of Tampa, Florida." <em>Journal of the American Statistical Association</em>.</li>
+            <li>Winkler, W. E. (1990). "String Comparator Metrics and Enhanced Decision Rules in the 
+                Fellegi-Sunter Model of Record Linkage." <em>Proceedings of the Section on Survey Research 
+                Methods, American Statistical Association</em>.</li>
+        </ol>
+    </section>
+
+    <!-- APPENDIX B: Code Examples -->
+    <section id="appendix-b">
+        <h2>Appendix B: Quick Reference Code Examples</h2>
+
+        <h3>B.1 Running the Full Pipeline</h3>
+        <pre><code># Step 1: Data Preparation
+python data_preparation.py
+
+# Step 2: Model Training and Prediction
+python train_model.py</code></pre>
+
+        <h3>B.2 Loading a Trained Model</h3>
+        <pre><code>from splink import Linker, DuckDBAPI
+import json
+
+# Load saved model
+with open("model_output/model_YYYYMMDD_HHMMSS.json", "r") as f:
+    model_settings = json.load(f)
+
+# Create linker with saved settings
+db_api = DuckDBAPI()
+linker = Linker(new_data, model_settings, db_api=db_api)
+
+# Generate predictions on new data
+predictions = linker.inference.predict(threshold_match_probability=0.9)</code></pre>
+
+        <h3>B.3 Visualizing Results</h3>
+        <pre><code># Match weights chart
+linker.visualisations.match_weights_chart()
+
+# Waterfall chart for specific pairs
+records = predictions.as_record_dict(limit=5)
+linker.visualisations.waterfall_chart(records)
+
+# Interactive comparison dashboard
+linker.visualisations.comparison_viewer_dashboard(
+    predictions, 
+    "comparison_dashboard.html"
+)</code></pre>
+
+        <h3>B.4 Evaluating with Ground Truth</h3>
+        <pre><code>from blockingpy import Blocker
+
+# If you have ground truth labels
+true_blocks = pd.DataFrame({
+    'x': [...],      # Record indices
+    'y': [...],      # Paired record indices  
+    'block': [...]   # True block assignments
+})
+
+# Evaluate blocking quality
+blocker = Blocker()
+result = blocker.block(x=df['txt'], ann='hnsw')
+eval_result = blocker.eval(result, true_blocks)
+
+print(eval_result.metrics)
+# recall       0.997
+# precision    1.000
+# f1_score     0.998</code></pre>
+    </section>
+
+    <footer>
+        <p><strong>Document Version:</strong> 2.0</p>
+        <p><strong>Last Updated:</strong> December 2024</p>
+        <p><strong>Authors:</strong> SPM Team, Allegis Group</p>
+        <p><strong>Classification:</strong> Internal Technical Documentation</p>
+    </footer>
+
+</body>
+</html>
+

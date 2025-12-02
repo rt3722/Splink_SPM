@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPM Entity Resolution Model | Splink + BlockingPy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0d1117;
+            --bg-card: #161b22;
+            --bg-card-hover: #1c2128;
+            --accent-primary: #58a6ff;
+            --accent-secondary: #7ee787;
+            --accent-warning: #d29922;
+            --accent-purple: #a371f7;
+            --accent-red: #f85149;
+            --text-primary: #e6edf3;
+            --text-secondary: #8b949e;
+            --text-muted: #6e7681;
+            --border-color: #30363d;
+            --gradient-start: #1a1f36;
+            --gradient-end: #0d1117;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(180deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+            color: var(--text-primary);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        /* Page Layout */
+        .page {
+            min-height: 100vh;
+            padding: 4rem 2rem;
+            position: relative;
+            page-break-after: always;
+        }
+
+        .page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary), var(--accent-purple));
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-purple) 50%, var(--accent-secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--accent-primary);
+            border-radius: 2px;
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            color: var(--accent-secondary);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .lead {
+            font-size: 1.35rem;
+            color: var(--text-primary);
+            font-weight: 300;
+            max-width: 800px;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: calc(100vh - 8rem);
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(88, 166, 255, 0.1);
+            border: 1px solid rgba(88, 166, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            color: var(--accent-primary);
+            margin-bottom: 2rem;
+            font-weight: 500;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            font-weight: 300;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            border-color: var(--accent-primary);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(88, 166, 255, 0.1);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-label {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
+        }
+
+        /* Cards */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: var(--accent-primary);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-icon.blue { background: rgba(88, 166, 255, 0.15); }
+        .card-icon.green { background: rgba(126, 231, 135, 0.15); }
+        .card-icon.purple { background: rgba(163, 113, 247, 0.15); }
+        .card-icon.orange { background: rgba(210, 153, 34, 0.15); }
+
+        /* Architecture Diagram */
+        .architecture {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin-top: 2rem;
+        }
+
+        .flow-diagram {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .flow-box {
+            background: linear-gradient(135deg, rgba(88, 166, 255, 0.1), rgba(163, 113, 247, 0.05));
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.25rem 1.75rem;
+            text-align: center;
+            min-width: 160px;
+            transition: all 0.3s ease;
+        }
+
+        .flow-box:hover {
+            border-color: var(--accent-primary);
+            transform: scale(1.02);
+        }
+
+        .flow-box.highlight {
+            background: linear-gradient(135deg, rgba(126, 231, 135, 0.15), rgba(88, 166, 255, 0.1));
+            border-color: var(--accent-secondary);
+        }
+
+        .flow-box h4 {
+            color: var(--accent-primary);
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .flow-box span {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .flow-arrow {
+            color: var(--text-muted);
+            font-size: 1.5rem;
+        }
+
+        /* Code Block */
+        .code-block {
+            background: #0d1117;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+        }
+
+        .code-block code {
+            font-family: 'JetBrains Mono', 'Fira Code', monospace;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+        }
+
+        .code-block .keyword { color: var(--accent-purple); }
+        .code-block .string { color: var(--accent-secondary); }
+        .code-block .comment { color: var(--text-muted); font-style: italic; }
+        .code-block .function { color: var(--accent-primary); }
+
+        /* Feature List */
+        .feature-list {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+
+        .feature-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(48, 54, 61, 0.5);
+        }
+
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+
+        .feature-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: rgba(126, 231, 135, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 0.2rem;
+        }
+
+        .feature-icon::before {
+            content: '✓';
+            color: var(--accent-secondary);
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        /* Comparison Table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin-top: 2rem;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem 1.25rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .comparison-table th {
+            background: var(--bg-card);
+            color: var(--text-primary);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .comparison-table td {
+            background: rgba(22, 27, 34, 0.5);
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .comparison-table tr:hover td {
+            background: var(--bg-card);
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .badge.success {
+            background: rgba(126, 231, 135, 0.15);
+            color: var(--accent-secondary);
+        }
+
+        .badge.warning {
+            background: rgba(210, 153, 34, 0.15);
+            color: var(--accent-warning);
+        }
+
+        .badge.danger {
+            background: rgba(248, 81, 73, 0.15);
+            color: var(--accent-red);
+        }
+
+        /* Two Column Layout */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 900px) {
+            .two-col {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Section Divider */
+        .section-divider {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .section-divider::before,
+        .section-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-color), transparent);
+        }
+
+        .section-divider span {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* Page Number */
+        .page-number {
+            position: absolute;
+            bottom: 2rem;
+            right: 2rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(88, 166, 255, 0.08), rgba(163, 113, 247, 0.05));
+            border: 1px solid rgba(88, 166, 255, 0.2);
+            border-radius: 12px;
+            padding: 1.5rem 2rem;
+            margin: 1.5rem 0;
+        }
+
+        .highlight-box.success {
+            background: linear-gradient(135deg, rgba(126, 231, 135, 0.08), rgba(88, 166, 255, 0.05));
+            border-color: rgba(126, 231, 135, 0.2);
+        }
+
+        /* Footer */
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 3rem;
+            margin-top: auto;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            color: var(--text-primary);
+        }
+
+        .footer-meta {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-in {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        /* Print Styles */
+        @media print {
+            .page {
+                page-break-after: always;
+                min-height: auto;
+                padding: 2rem;
+            }
+            
+            body {
+                background: white;
+                color: #1a1a1a;
+            }
+            
+            .card, .stat-card, .architecture, .flow-box {
+                border: 1px solid #ddd;
+                background: #f9f9f9;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- PAGE 1: Title & Overview -->
+    <section class="page" id="page-1">
+        <div class="container">
+            <div class="hero">
+                <div class="hero-badge">
+                    <span>🔬</span>
+                    <span>Technical Overview</span>
+                </div>
+                
+                <h1>SPM Entity Resolution Model</h1>
+                <p class="subtitle">Probabilistic Record Linkage with Splink + BlockingPy</p>
+                
+                <p class="lead">
+                    A production-grade deduplication system combining <strong>probabilistic record linkage</strong> 
+                    with <strong>approximate nearest neighbor blocking</strong> to identify duplicate records 
+                    with high precision, even when data contains errors, typos, and inconsistencies.
+                </p>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">90%</div>
+                        <div class="stat-label">Training Data</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">20+</div>
+                        <div class="stat-label">Cleaned Fields</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">4</div>
+                        <div class="stat-label">Blocking Strategies</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">16</div>
+                        <div class="stat-label">Comparison Features</div>
+                    </div>
+                </div>
+
+                <div class="section-divider">
+                    <span>The Challenge</span>
+                </div>
+
+                <div class="card-grid">
+                    <div class="card">
+                        <div class="card-icon blue">📊</div>
+                        <h3>Data Quality Variations</h3>
+                        <p>Real-world candidate data contains typos, missing fields, inconsistent formatting, 
+                        and multiple representations of the same person across different sources.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon green">⚡</div>
+                        <h3>Scale Requirements</h3>
+                        <p>With millions of records, comparing every pair (O(n²)) is computationally infeasible. 
+                        We need smart blocking strategies to reduce comparisons while maintaining recall.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon purple">🎯</div>
+                        <h3>Precision vs. Recall</h3>
+                        <p>Must balance catching all true duplicates (high recall) against false positives 
+                        that could merge distinct individuals (high precision).</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer">
+                <div class="footer-logo">Allegis Group | SPM Team</div>
+                <div class="footer-meta">Entity Resolution Architecture</div>
+            </div>
+        </div>
+        <div class="page-number">1 / 3</div>
+    </section>
+
+    <!-- PAGE 2: Data Preparation Pipeline -->
+    <section class="page" id="page-2">
+        <div class="container">
+            <h2>Data Preparation Pipeline</h2>
+            <p class="lead">Our comprehensive cleaning and feature engineering process transforms raw candidate data 
+            into optimized inputs for both blocking and probabilistic matching.</p>
+
+            <div class="architecture">
+                <h3>Processing Flow</h3>
+                <div class="flow-diagram">
+                    <div class="flow-box">
+                        <h4>Raw TSV Data</h4>
+                        <span>spm_data_latest.tsv</span>
+                    </div>
+                    <span class="flow-arrow">→</span>
+                    <div class="flow-box">
+                        <h4>Train/Test Split</h4>
+                        <span>90% / 10%</span>
+                    </div>
+                    <span class="flow-arrow">→</span>
+                    <div class="flow-box highlight">
+                        <h4>Data Cleaning</h4>
+                        <span>20+ Field Types</span>
+                    </div>
+                    <span class="flow-arrow">→</span>
+                    <div class="flow-box">
+                        <h4>Feature Engineering</h4>
+                        <span>Arrays + Phonetics</span>
+                    </div>
+                    <span class="flow-arrow">→</span>
+                    <div class="flow-box highlight">
+                        <h4>Text Blob</h4>
+                        <span>BlockingPy Input</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="two-col">
+                <div>
+                    <h3>🧹 Field Cleaning Operations</h3>
+                    <ul class="feature-list">
+                        <li>
+                            <span class="feature-icon"></span>
+                            <div>
+                                <strong>Name Extraction (spaCy NER)</strong><br>
+                                <span style="color: var(--text-muted);">Extract person names from unstructured NAME_1, NAME_2, NAME_3 fields using Named Entity Recognition</span>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="feature-icon"></span>
+                            <div>
+                                <strong>Phonetic Encoding (Soundex/Metaphone)</strong><br>
+                                <span style="color: var(--text-muted);">Catches spelling variations like "Smith" vs "Smyth" which both encode to "S530"</span>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="feature-icon"></span>
+                            <div>
+                                <strong>Phone Validation (phonenumbers)</strong><br>
+                                <span style="color: var(--text-muted);">Parse and validate US phone numbers, standardize to digits-only format</span>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="feature-icon"></span>
+                            <div>
+                                <strong>LinkedIn URL Normalization</strong><br>
+                                <span style="color: var(--text-muted);">Validate URL format, extract profile handle, keep alpha characters only</span>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="feature-icon"></span>
+                            <div>
+                                <strong>Employer/Title Standardization</strong><br>
+                                <span style="color: var(--text-muted);">Remove Inc/LLC/Corp suffixes, normalize to lowercase</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>📦 Output Schema</h3>
+                    <div class="code-block">
+                        <code>
+<span class="comment"># Cleaned fields for Splink</span>
+unique_id           <span class="comment"># Integer ID (required)</span>
+firstname_cleaned   <span class="comment"># Exact match blocking</span>
+lastname_cleaned    <span class="comment"># Exact match blocking</span>
+firstname_soundex   <span class="comment"># Phonetic blocking</span>
+lastname_soundex    <span class="comment"># Phonetic blocking</span>
+linkedin_cleaned    <span class="comment"># Unique identifier</span>
+
+<span class="comment"># Array columns for intersection</span>
+names_array         <span class="comment"># All name variations</span>
+phones_array        <span class="comment"># All phone numbers</span>
+emails_array        <span class="comment"># All email addresses</span>
+employers_array     <span class="comment"># Work history</span>
+titles_array        <span class="comment"># Job titles</span>
+degrees_array       <span class="comment"># Education</span>
+
+<span class="comment"># Numeric for experience matching</span>
+months_experience       <span class="comment"># Total work exp</span>
+avg_months_per_employer <span class="comment"># Tenure pattern</span>
+
+<span class="comment"># Combined text for BlockingPy</span>
+text_blob           <span class="comment"># Embedding input</span>
+                        </code>
+                    </div>
+
+                    <div class="highlight-box success">
+                        <strong>💡 Why Arrays?</strong><br>
+                        <span style="color: var(--text-secondary);">
+                            Candidates often have multiple phone numbers, emails, and employers. 
+                            Array columns allow Splink's <code>ArrayIntersectAtSizes</code> to find 
+                            matches even when only one value overlaps.
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer">
+                <div class="footer-logo">Allegis Group | SPM Team</div>
+                <div class="footer-meta">Data Preparation Pipeline</div>
+            </div>
+        </div>
+        <div class="page-number">2 / 3</div>
+    </section>
+
+    <!-- PAGE 3: Model Architecture & Why This Approach -->
+    <section class="page" id="page-3">
+        <div class="container">
+            <h2>Model Architecture & Why This Approach</h2>
+            <p class="lead">We combine two complementary technologies: <strong>BlockingPy</strong> for smart candidate 
+            pair generation and <strong>Splink</strong> for probabilistic scoring based on the Fellegi-Sunter model.</p>
+
+            <div class="architecture">
+                <h3>Two-Stage Architecture</h3>
+                <div class="flow-diagram">
+                    <div class="flow-box">
+                        <h4>Stage 1: BlockingPy</h4>
+                        <span>ANN Blocking (HNSW)</span>
+                    </div>
+                    <span class="flow-arrow">→</span>
+                    <div class="flow-box highlight">
+                        <h4>Candidate Pairs</h4>
+                        <span>~99.9% Reduction</span>
+                    </div>
+                    <span class="flow-arrow">→</span>
+                    <div class="flow-box">
+                        <h4>Stage 2: Splink</h4>
+                        <span>Probabilistic Scoring</span>
+                    </div>
+                    <span class="flow-arrow">→</span>
+                    <div class="flow-box highlight">
+                        <h4>Clusters</h4>
+                        <span>Deduplicated Entities</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="two-col" style="margin-top: 2rem;">
+                <div>
+                    <h3>🔍 Why BlockingPy?</h3>
+                    <p>Traditional deterministic blocking (exact matches on fields) misses records with:</p>
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Issue</th>
+                                <th>Traditional</th>
+                                <th>BlockingPy</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Typos ("John" vs "Jhon")</td>
+                                <td><span class="badge danger">Missed</span></td>
+                                <td><span class="badge success">Caught</span></td>
+                            </tr>
+                            <tr>
+                                <td>Spelling ("Smith" vs "Smyth")</td>
+                                <td><span class="badge danger">Missed</span></td>
+                                <td><span class="badge success">Caught</span></td>
+                            </tr>
+                            <tr>
+                                <td>Missing Fields</td>
+                                <td><span class="badge danger">Missed</span></td>
+                                <td><span class="badge success">Caught</span></td>
+                            </tr>
+                            <tr>
+                                <td>Format Variations</td>
+                                <td><span class="badge warning">Partial</span></td>
+                                <td><span class="badge success">Caught</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="highlight-box" style="margin-top: 1.5rem;">
+                        <strong>HNSW Algorithm</strong><br>
+                        <span style="color: var(--text-secondary);">
+                            Hierarchical Navigable Small World graphs provide O(log n) lookup time 
+                            with high recall. Used by Statistics Poland for official statistics.
+                        </span>
+                    </div>
+                </div>
+
+                <div>
+                    <h3>📊 Why Splink?</h3>
+                    <p>Splink implements the Fellegi-Sunter probabilistic model, providing:</p>
+                    <ul class="feature-list">
+                        <li>
+                            <span class="feature-icon"></span>
+                            <div>
+                                <strong>Mathematical Foundation</strong><br>
+                                <span style="color: var(--text-muted);">Bayes factors quantify evidence for/against matches</span>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="feature-icon"></span>
+                            <div>
+                                <strong>Unsupervised Learning</strong><br>
+                                <span style="color: var(--text-muted);">EM algorithm estimates parameters without labeled data</span>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="feature-icon"></span>
+                            <div>
+                                <strong>Rich Comparisons</strong><br>
+                                <span style="color: var(--text-muted);">Fuzzy matching, array intersection, numeric thresholds</span>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="feature-icon"></span>
+                            <div>
+                                <strong>Scalability</strong><br>
+                                <span style="color: var(--text-muted);">DuckDB backend handles millions of records</span>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <div class="code-block" style="margin-top: 1rem;">
+                        <code>
+<span class="comment"># Our blocking strategy</span>
+blocking_rules = [
+  block_on(<span class="string">"block"</span>),       <span class="comment"># BlockingPy ANN</span>
+  block_on(<span class="string">"firstname_cleaned"</span>, 
+           <span class="string">"lastname_cleaned"</span>),<span class="comment"># Exact</span>
+  block_on(<span class="string">"firstname_soundex"</span>, 
+           <span class="string">"lastname_soundex"</span>),<span class="comment"># Phonetic</span>
+]
+                        </code>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-divider">
+                <span>Key Benefits</span>
+            </div>
+
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-icon green">✅</div>
+                    <h3>Higher Recall</h3>
+                    <p>Combined approach catches matches that deterministic-only blocking would miss. 
+                    ANN finds fuzzy matches; phonetic catches spelling variations.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon blue">🎯</div>
+                    <h3>Maintained Precision</h3>
+                    <p>Splink's probabilistic scoring with 16 comparison features ensures high precision. 
+                    Match probability thresholds prevent false positives.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon purple">📈</div>
+                    <h3>Production Ready</h3>
+                    <p>Both libraries are battle-tested. Splink by UK Ministry of Justice; BlockingPy by 
+                    Statistics Poland for official population statistics.</p>
+                </div>
+            </div>
+
+            <div class="highlight-box success" style="margin-top: 2rem;">
+                <strong style="font-size: 1.1rem;">📌 Conclusion</strong><br><br>
+                <span style="color: var(--text-primary); font-size: 1.05rem;">
+                    The Splink + BlockingPy combination provides the optimal balance of <strong>recall</strong> 
+                    (catching all duplicates including those with data quality issues) and <strong>precision</strong> 
+                    (avoiding false merges through probabilistic scoring). This hybrid approach significantly 
+                    outperforms either method alone, making it the ideal choice for SPM's entity resolution needs.
+                </span>
+            </div>
+
+            <div class="footer">
+                <div class="footer-logo">Allegis Group | SPM Team</div>
+                <div class="footer-meta">Model Architecture & Justification</div>
+            </div>
+        </div>
+        <div class="page-number">3 / 3</div>
+    </section>
+
+</body>
+</html>
+

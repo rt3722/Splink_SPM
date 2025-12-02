@@ -1,0 +1,35 @@
+# Splink + BlockingPy Data Preparation Requirements
+# Core dependencies
+pandas>=2.0.0
+numpy>=1.24.0
+
+# Splink for probabilistic record linkage
+splink>=4.0.0
+
+# BlockingPy for ANN-based blocking
+blockingpy>=0.1.0
+
+# NLP for name extraction
+spacy>=3.7.0
+
+# Phone number parsing and validation
+phonenumbers>=8.13.0
+
+# Phonetic encoding (Soundex, Metaphone, etc.)
+jellyfish>=1.0.0
+
+# DuckDB backend for Splink
+duckdb>=0.9.0
+
+# Data validation
+pyarrow>=14.0.0
+
+# Progress bars
+tqdm>=4.66.0
+
+# For text cleaning
+unidecode>=1.3.0
+
+# Dense vector embeddings for BlockingPy (model2vec)
+model2vec>=0.4.1
+
